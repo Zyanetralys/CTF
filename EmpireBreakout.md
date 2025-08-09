@@ -1,4 +1,5 @@
 # **CTF EMPIRE BREAKOUT**
+
 OBJETIVO: 192.168.131.129 (Empire Breakout) <br>
  <br>
 <div style="text-align: center;">
@@ -6,12 +7,12 @@ OBJETIVO: 192.168.131.129 (Empire Breakout) <br>
 </div>
  <br>
 ## SECUENCIA DE ATAQUE
- <br>
+
 ### FASE 1: PREPARACIÓN 
 mkdir ~/Desktop/vulnhub && cd ~/Desktop/vulnhub <br>
 ping -c 4 192.168.131.129  # Verificación de conectividad <br>
 Resultado: Objetivo accesible. <br>
- <br>
+
 ### FASE 2: RECONOCIMIENTO
 nmap -sC -sV -p- --open -oN escaneo 192.168.131.129 <br>
 Puertos identificados: <br>
@@ -20,25 +21,25 @@ Puertos identificados: <br>
 •	445/tcp - Samba smbd 4.6.2 <br>
 •	10000/tcp - MiniServ 1.981 (Webmin) <br>
 •	20000/tcp - MiniServ 1.830 (Usermin) <br>
- <br>
+
 ### FASE 3: EXPLOTACIÓN INICIAL
 Análisis web: Navegador → http://192.168.131.129 <br>
 •	Página Apache por defecto encontrada <br>
 •	Inspección código fuente HTML <br>
- <br>
+
 Extracción de credenciales: <br>
 •	Comentario HTML: <!-- Don't worry this is safe to share with you, my access is encoded --> <br>
 •	Código Brainfuck localizado al final del HTML <br>
 •	Decodificación: decode.fr → Contraseña obtenida: .2uqPEfj3D<P'a-3 <br>
  <br>
 echo ".2uqPEfj3D<P'a-3" > clave  # Almacenamiento seguro <br>
- <br>
+
 Enumeración de usuarios: <br>
 enum4linux -a 192.168.131.129 <br>
 Usuario identificado: cyber <br>
- <br>
+
 ### FASE 4: ACCESO INICIAL
- <br>
+
 Autenticación: <br>
 •	Panel Usermin: https://192.168.131.129:20000 <br>
 •	Credenciales: cyber / .2uqPEfj3D<P'a-3 <br>
