@@ -3,7 +3,7 @@
 OBJETIVO: Linux 192.168.131.129 (Empire Breakout) <br>
  
  <div style="text-align: center;">
-  <img src="https://raw.githubusercontent.com/Zyanetralys/profile/refs/heads/main/Earth.jpg" width="550" alt="Star Wars Battlefront">
+  <img src="https://raw.githubusercontent.com/Zyanetralys/profile/refs/heads/main/HD-wallpaper-star-wars-empire-battlefront-games-gaming-ps4-star-wars-starwars-xbox.jpg" width="550" alt="Star Wars Battlefront">
 </div>
 
 ## SECUENCIA DE ATAQUE
