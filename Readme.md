@@ -10,6 +10,7 @@ Bienvenido al **Centro de Mando de Operaciones CTF** de Zyanetralys, donde se re
 
 ### 📂 VulnHub
 - [Empire Breakout](https://github.com/Zyanetralys/CTF/blob/main/EmpireBreakout.md)
+- [The Planets: Earth](https://github.com/Zyanetralys/CTF/blob/main/ThePlanetsEarh.md)
 
 ### 📂 HackTheBox
 - 🚧 En preparación.
