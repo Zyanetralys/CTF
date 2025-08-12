@@ -46,6 +46,7 @@ Autenticación: <br>
 •	ACCESO CONCEDIDO <br>
  <br>
 Primera flag: <br>
+En la parte inferior, clicar en la consola de comandos. 
 ls          # Exploración directorio <br>
 cat user.txt # Flag user obtenida <br>
 
