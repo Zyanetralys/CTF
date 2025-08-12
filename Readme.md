@@ -23,7 +23,7 @@ Bienvenido al **Centro de Mando de Operaciones CTF** de Zyanetralys, donde se re
 
 ---
 
-## 🎯 Objetivo
+## Objetivo
 
 Consolidar conocimiento ofensivo y defensivo en entornos controlados, y documentar cada fase: *reconocimiento, explotación, escalada, limpieza y lecciones aprendidas.*
 
@@ -34,7 +34,7 @@ Este repositorio servirá como bitácora ideal para:
 
 ---
 
-## 🛡️ Código
+## Código
 
 Cada operación se trata desde la ética y la profesionalidad, no se apoya el uso malintencionado de las técnicas documentadas.  
 Este contenido es únicamente con fines educativos y de entrenamiento técnico.
