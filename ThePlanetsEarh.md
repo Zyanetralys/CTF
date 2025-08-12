@@ -155,7 +155,7 @@ cat /root/root_flag.txt
 
 ---
 
-##MV
+## MV
 https://www.vulnhub.com/entry/the-planets-earth,755/
 
 ---
