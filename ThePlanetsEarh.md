@@ -1,6 +1,10 @@
 # CTF EARTH LOCAL  
 **Objetivo:** Linux 192.168.131.130 (Earth Local)  
 
+ <div style="text-align: center;">
+  <img src="https://raw.githubusercontent.com/Zyanetralys/profile/refs/heads/main/planeterath.jpg" width="550" alt="Earth">
+</div>
+
 ---
 
 ## SECUENCIA DE ATAQUE EXPLICADA  
@@ -155,7 +159,3 @@ cat /root/root_flag.txt
 https://www.vulnhub.com/entry/the-planets-earth,755/
 
 ---
-
- <div style="text-align: center;">
-  <img src="https://raw.githubusercontent.com/Zyanetralys/profile/refs/heads/main/planeterath.jpg" width="550" alt="Earth">
-</div>
