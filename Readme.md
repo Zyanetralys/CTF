@@ -6,7 +6,7 @@ Bienvenido al **Centro de Mando de Operaciones CTF** de Zyanetralys, donde se re
 
 ---
 
-## 🗂️ Zona de Despliegue
+## Despliegue
 
 ### 📂 VulnHub
 - [Empire Breakout](https://github.com/Zyanetralys/CTF/blob/main/EmpireBreakout.md)
