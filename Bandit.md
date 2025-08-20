@@ -237,37 +237,37 @@ cat 'file name'       # Alternativa con comillas simples
 
 ---
 
-Nivel 4
+## Nivel 4
 
 Usuario: bandit4
 Contraseña: Nivel 3
 
-Paso 1 – Conexión SSH:
+### Paso 1 – Conexión SSH:
 "ssh bandit4@bandit.labs.overthewire.org
  -p 2220"
 
-Paso 2 – Confirmar directorio actual:
+### Paso 2 – Confirmar directorio actual:
 "pwd"
 
-Paso 3 – Explorar directorio inhere y archivos especiales:
+### Paso 3 – Explorar directorio inhere y archivos especiales:
 "ls -la ./inhere"
 "ls -lR ./inhere"
 "find ./inhere -type f"
 
-Paso 4 – Identificar la flag usando contenido legible:
+### Paso 4 – Identificar la flag usando contenido legible:
 
 for f in ./inhere/-file*; do echo "$f:"; strings "$f"; done
 
 
 Observa qué archivo contiene contenido legible de la flag.
 
-Paso 5 – Leer la flag:
+### Paso 5 – Leer la flag:
 "cat './inhere/-file07'"
 
 Flag Nivel 4 (Base64):
 "NG9RWVZQa3hab09FRU9PNXBUVzgxRkI4ajhseFhHVVF3"
 
-Reflexión:
+### Reflexión:
 
 Reconocimiento: pwd → ubicación actual
 
