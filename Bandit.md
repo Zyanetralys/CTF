@@ -1,151 +1,240 @@
-# BANDIT
+# 🏴‍☠️ BANDIT WARGAME
 
-[<img src="https://es.web.img2.acsta.net/medias/nmedia/18/35/83/30/18458300.jpg" alt="Imagen" width="400">
-](https://overthewire.org/wargames/bandit/)
+[![Bandit](https://es.web.img2.acsta.net/medias/nmedia/18/35/83/30/18458300.jpg)](https://overthewire.org/wargames/bandit/)
 
-===========================================
-Bandit Wargame – Nivel 0
+> **Juego de guerra de seguridad informática** - Desarrolla habilidades en terminal Linux y seguridad
 
-Host: bandit.labs.overthewire.org
-Puerto SSH: 2220
-Usuario: bandit0
-Contraseña: bandit0
+## 📋 Información General
 
-Paso 1 – Conexión SSH:
-Conéctate al servidor usando SSH. Verifica siempre usuario, host y puerto antes de conectar.
-Comando:
-"ssh bandit0@bandit.labs.overthewire.org
- -p 2220"
+- **Host**: `bandit.labs.overthewire.org`
+- **Puerto SSH**: `2220`
+- **Objetivo**: Encontrar flags para avanzar al siguiente nivel
 
-Paso 2 – Confirmar directorio actual:
-Verifica en qué directorio estás para conocer tu posición en el sistema.
-Comando:
-"pwd"
+---
 
-Paso 3 – Listar archivos:
-Lista los archivos y directorios presentes para localizar tu objetivo.
-Comando:
-"ls -l"
+## 🎯 Nivel 0
 
-Paso 4 – Leer la flag:
-Extrae la flag del archivo readme. Esta será la contraseña para el Nivel 1.
-Comando:
-"cat readme"
+### Credenciales
+- **Usuario**: `bandit0`
+- **Contraseña**: `bandit0`
 
-Reflexión:
+### Pasos
 
-Reconocimiento: pwd → ubicación actual
+#### 1️⃣ Conexión SSH
+```bash
+ssh bandit0@bandit.labs.overthewire.org -p 2220
+```
 
-Enumeración: ls -l → archivos/directorios presentes
+#### 2️⃣ Reconocimiento del entorno
+```bash
+pwd    # Confirmar directorio actual
+```
 
-Explotación/Extracción: cat readme → obtener la flag
+#### 3️⃣ Enumeración de archivos
+```bash
+ls -l  # Listar archivos y permisos
+```
 
-Flag Nivel 0 (Base64, solo para seguimiento interno):
-"WmpMak5tTDpGdnZ5Um5yYjJyZk5XT1pPVGE2aXA1SWY="
+#### 4️⃣ Extracción de la flag
+```bash
+cat readme
+```
 
-===========================================
-Bandit Wargame – Nivel 1
+### 🧠 Metodología
+- **Reconocimiento**: `pwd` → ubicación actual
+- **Enumeración**: `ls -l` → archivos/directorios presentes
+- **Explotación**: `cat readme` → obtener la flag
 
-Host: bandit.labs.overthewire.org
-Puerto SSH: 2220
-Usuario: bandit1
-Contraseña: (obtenida del Nivel 0)
+### 🔐 Flag (Base64)
+```
+WmpMak5tTDpGdnZ5Um5yYjJyZk5XT1pPVGE2aXA1SWY=
+```
 
-Paso 1 – Conexión SSH:
-"ssh bandit1@bandit.labs.overthewire.org
- -p 2220"
+---
 
-Paso 2 – Confirmar directorio actual:
-"pwd"
+## 🎯 Nivel 1
 
-Paso 3 – Listar archivos:
-"ls -l"
+### Credenciales
+- **Usuario**: `bandit1`
+- **Contraseña**: *Obtenida del Nivel 0*
 
-Paso 4 – Leer la flag:
-El archivo comienza con -, usa ./ para evitar confusión con opciones de comando:
-"cat ./-"
+### Pasos
 
-Reflexión:
+#### 1️⃣ Conexión SSH
+```bash
+ssh bandit1@bandit.labs.overthewire.org -p 2220
+```
 
-Reconocimiento: pwd → ubicación actual
+#### 2️⃣ Reconocimiento del entorno
+```bash
+pwd    # Confirmar directorio actual
+```
 
-Enumeración: ls -l → archivos/directorios
+#### 3️⃣ Enumeración de archivos
+```bash
+ls -l  # Listar archivos y permisos
+```
 
-Explotación/Extracción: cat ./- → obtener la flag
+#### 4️⃣ Extracción de la flag
+```bash
+cat ./-
+```
+> ⚠️ **Nota**: El archivo comienza con `-`, usar `./` evita confusión con opciones de comando
 
-Flag Nivel 1 (Base64, solo para seguimiento interno):
-"MjYzSkdKUGZnVTZMdGRFdmdmV1UxWFA1eWFjMjltRng="
+### 🧠 Metodología
+- **Reconocimiento**: `pwd` → ubicación actual
+- **Enumeración**: `ls -l` → archivos/directorios
+- **Explotación**: `cat ./-` → manejo de nombres especiales
 
-===========================================
-Bandit Wargame – Nivel 2
+### 🔐 Flag (Base64)
+```
+MjYzSkdKUGZnVTZMdGRFdmdmV1UxWFA1eWFjMjltRng=
+```
 
-Host: bandit.labs.overthewire.org
-Puerto SSH: 2220
-Usuario: bandit2
-Contraseña: (obtenida del Nivel 1)
+---
 
-Paso 1 – Conexión SSH:
-"ssh bandit2@bandit.labs.overthewire.org
- -p 2220"
+## 🎯 Nivel 2
 
-Paso 2 – Confirmar directorio actual:
-"pwd"
+### Credenciales
+- **Usuario**: `bandit2`
+- **Contraseña**: *Obtenida del Nivel 1*
 
-Paso 3 – Listar archivos y permisos:
-"ls -l"
+### Pasos
 
-Paso 4 – Leer la flag:
-El archivo tiene espacios y guiones, usa ./ y comillas para acceder correctamente:
-"cat './--spaces in this filename--'"
+#### 1️⃣ Conexión SSH
+```bash
+ssh bandit2@bandit.labs.overthewire.org -p 2220
+```
 
-Reflexión:
+#### 2️⃣ Reconocimiento del entorno
+```bash
+pwd    # Confirmar directorio actual
+```
 
-Reconocimiento: pwd → ubicación actual
+#### 3️⃣ Enumeración de archivos
+```bash
+ls -l  # Listar archivos y permisos
+```
 
-Enumeración: ls -l → archivos y permisos
+#### 4️⃣ Extracción de la flag
+```bash
+cat './spaces in this filename'
+# o alternativamente:
+cat "spaces in this filename"
+```
+> ⚠️ **Nota**: Archivos con espacios requieren comillas o escape
 
-Explotación/Extracción: cat './--spaces in this filename--' → obtener la flag
+### 🧠 Metodología
+- **Reconocimiento**: `pwd` → ubicación actual
+- **Enumeración**: `ls -l` → archivos y permisos
+- **Explotación**: manejo de espacios en nombres de archivo
 
-Flag Nivel 2 (Base64, solo para seguimiento interno):
-"TU5rOEtOSDNVc2lpbzQ1UFJVRW9ERlBxZnhMUGxTbXg="
+### 🔐 Flag (Base64)
+```
+TU5rOEtOSDNVc2lpbzQ1UFJVRW9ERlBxZnhMUGxTbXg=
+```
 
-===========================================
-Bandit Wargame – Nivel 3
+---
 
-Host: bandit.labs.overthewire.org
-Puerto SSH: 2220
-Usuario: bandit3
-Contraseña: (obtenida del Nivel 2)
+## 🎯 Nivel 3
 
-Paso 1 – Conexión SSH:
-"ssh bandit3@bandit.labs.overthewire.org
- -p 2220"
+### Credenciales
+- **Usuario**: `bandit3`
+- **Contraseña**: *Obtenida del Nivel 2*
 
-Paso 2 – Confirmar directorio actual:
-"pwd"
+### Pasos
 
-Paso 3 – Listar archivos y subdirectorios:
-"ls -l"
-"ls -lR ./inhere"
+#### 1️⃣ Conexión SSH
+```bash
+ssh bandit3@bandit.labs.overthewire.org -p 2220
+```
 
-Paso 4 – Localizar la flag sin asumir tamaño:
-"find ./inhere -type f"
+#### 2️⃣ Reconocimiento del entorno
+```bash
+pwd    # Confirmar directorio actual
+```
 
-Paso 5 – Leer la flag:
-"cat './inhere/...Hiding-From-You'"
+#### 3️⃣ Enumeración completa
+```bash
+ls -l           # Listar contenido actual
+ls -la inhere/  # Incluir archivos ocultos en subdirectorio
+# o recursivamente:
+ls -lRa ./inhere
+```
 
-Reflexión:
+#### 4️⃣ Localización estratégica
+```bash
+find ./inhere -type f  # Buscar todos los archivos
+```
 
-Reconocimiento: pwd → ubicación actual
+#### 5️⃣ Extracción de la flag
+```bash
+cat './inhere/...Hiding-From-You'
+```
 
-Enumeración: ls -l / ls -lR → archivos/subdirectorios
+### 🧠 Metodología
+- **Reconocimiento**: `pwd` → ubicación actual
+- **Enumeración**: `ls -la` → incluir archivos ocultos
+- **Localización**: `find` → identificación sistemática
+- **Explotación**: acceso a archivos ocultos con nombres especiales
 
-Localización estratégica: find ./inhere -type f → identificar el archivo
+### 🔐 Flag (Base64)
+```
+MldtckRGUm1KSXEzSVB4bmVBYU1HaGFwMHBGaEZuSk4=
+```
 
-Explotación/Extracción: cat './inhere/...Hiding-From-You' → obtener la flag
+---
 
-Flag Nivel 3 (Base64):
-"MldtckRGUm1KSXEzSVB4bmVBYU1HaGFwMHBGaEZuSk4="
+## 📚 Conceptos Clave Aprendidos
 
-===========================================
+### Nivel 0
+- Conexión SSH básica
+- Navegación básica en terminal
+- Lectura de archivos con `cat`
 
+### Nivel 1
+- Manejo de archivos con nombres especiales (`-`)
+- Uso de rutas relativas (`./`)
+
+### Nivel 2
+- Archivos con espacios en el nombre
+- Escape de caracteres especiales
+
+### Nivel 3
+- Archivos ocultos (que comienzan con `.`)
+- Búsqueda recursiva de archivos
+- Comando `find` para localización
+
+## 🛠️ Comandos Útiles
+
+```bash
+# Navegación y reconocimiento
+pwd                    # Directorio actual
+ls -la                # Listar todo (incluye ocultos)
+ls -lR                # Listar recursivamente
+
+# Búsqueda de archivos
+find . -name "*.txt"  # Buscar por nombre
+find . -type f        # Buscar solo archivos
+find . -type d        # Buscar solo directorios
+
+# Lectura de archivos
+cat filename          # Leer archivo completo
+head filename         # Primeras 10 líneas
+tail filename         # Últimas 10 líneas
+
+# Manejo de nombres especiales
+cat ./filename        # Archivo que empieza con -
+cat "file name"       # Archivo con espacios
+cat 'file name'       # Alternativa con comillas simples
+```
+
+## 🔗 Enlaces Útiles
+
+- [OverTheWire Bandit](https://overthewire.org/wargames/bandit/)
+- [Manual de Linux](https://man7.org/linux/man-pages/)
+- [SSH Tutorial](https://www.ssh.com/academy/ssh)
+
+---
+
+> **💡 Tip**: Siempre usa `ls -la` para ver archivos ocultos y permisos completos
