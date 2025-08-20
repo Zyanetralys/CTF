@@ -276,3 +276,5 @@ Enumeración: ls -la / ls -lR → inspección completa
 Localización: find → identificar todos los archivos regulares
 
 Explotación/Extracción: strings / cat → encontrar contenido legible y extraer la flag
+
+---
