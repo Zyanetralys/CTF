@@ -229,12 +229,10 @@ cat "file name"       # Archivo con espacios
 cat 'file name'       # Alternativa con comillas simples
 ```
 
-## 🔗 Enlaces Útiles
+## 🔗 Utilidades
 
 - [OverTheWire Bandit](https://overthewire.org/wargames/bandit/)
 - [Manual de Linux](https://man7.org/linux/man-pages/)
 - [SSH Tutorial](https://www.ssh.com/academy/ssh)
 
 ---
-
-> **💡 Tip**: Siempre usa `ls -la` para ver archivos ocultos y permisos completos
