@@ -12,6 +12,9 @@ Bienvenido al **Centro de Mando de Operaciones CTF** de Zyanetralys, donde se re
 - [Empire Breakout](https://github.com/Zyanetralys/CTF/blob/main/EmpireBreakout.md)
 - [The Planets: Earth](https://github.com/Zyanetralys/CTF/blob/main/ThePlanetsEarh.md)
 
+### 📂 The Hackers Lab
+- [Bandit](https://github.com/Zyanetralys/CTF/blob/main/Bandit.md)
+
 ### 📂 HackTheBox
 - 🚧 En preparación.
 
