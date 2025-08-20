@@ -243,29 +243,40 @@ Usuario: bandit4
 Contraseña: Nivel 3
 
 ### Paso 1 – Conexión SSH:
+```bash
 "ssh bandit4@bandit.labs.overthewire.org
  -p 2220"
+```
 
 ### Paso 2 – Confirmar directorio actual:
+```bash
 "pwd"
+```
 
 ### Paso 3 – Explorar directorio inhere y archivos especiales:
+```bash
 "ls -la ./inhere"
 "ls -lR ./inhere"
 "find ./inhere -type f"
+```
 
 ### Paso 4 – Identificar la flag usando contenido legible:
-
+```bash
 for f in ./inhere/-file*; do echo "$f:"; strings "$f"; done
+```
 
 
 Observa qué archivo contiene contenido legible de la flag.
 
 ### Paso 5 – Leer la flag:
+```bash
 "cat './inhere/-file07'"
+```
 
 Flag Nivel 4 (Base64):
+```bash
 "NG9RWVZQa3hab09FRU9PNXBUVzgxRkI4ajhseFhHVVF3"
+```
 
 ### Reflexión:
 
