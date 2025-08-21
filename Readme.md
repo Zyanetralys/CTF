@@ -24,6 +24,9 @@ Bienvenido al **Centro de Mando de Operaciones CTF** de Zyanetralys, donde se re
 ### 📂 The Hackers Lab
 - 🚧 Planificación estratégica en curso.
 
+### 📂 Retos
+- [Hackviser](https://github.com/Zyanetralys/CTF/blob/main/Hackviser.md)
+
 ---
 
 ## Objetivo
