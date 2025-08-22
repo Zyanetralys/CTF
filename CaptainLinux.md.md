@@ -1,5 +1,5 @@
 # CTF Captain Linux
-<img src="https://pbs.twimg.com/profile_images/824801278614204416/x9uWuwPm_400x400.jpg" width="300"/>
+<img src="https://tacticalgearjunkie.com/cdn/shop/products/tacticalpenguinnewsticker-423371.jpg" width="300"/>
 
 ## 1 Conectarse a la máquina del examen
 
@@ -7,7 +7,6 @@ Conectarse usando SSH con el usuario y la contraseña del examen.
 Comando: "ssh captain@<IP_DEL_EXAMEN> -p 22"
 Password: shadow
 Reemplaza <IP_DEL_EXAMEN> con la IP que te den.
-
 ## 2 Navegar al directorio home del usuario
 
 Ir al directorio home de captain: "cd /home/captain"
