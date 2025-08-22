@@ -107,8 +107,9 @@ emailpass.txt → contiene pares email:password
 
 favorite_movie.txt → protegido, contenido: interestellar
 
+=========================
 
-==========================
+---
 
 # PARTE 2 CTF
 
@@ -213,3 +214,7 @@ Listar permisos: "icacls RUTA_CARPETA"
 Listar procesos: "tasklist"
 
 Consultar estado de servicio: "sc query NOMBRE_SERVICIO"
+
+==============
+
+---
