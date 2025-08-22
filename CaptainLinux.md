@@ -196,7 +196,7 @@ Conectar desde cliente remoto usando PowerShell o Netcat (Linux).
 
 Enviar mensaje de prueba y confirmar recepción.
 
-Comandos esenciales Windows resumidos
+## Comandos esenciales Windows
 
 Ver reglas firewall: "netsh advfirewall firewall show rule name=(nc)"
 
