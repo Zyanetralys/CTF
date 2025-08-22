@@ -34,7 +34,7 @@ Bienvenido al **Centro de Mando de Operaciones CTF** de Zyanetralys, donde se re
 
 
 ### 📂 Retos
-- [Captain Linux](https://github.com/Zyanetralys/CTF/blob/main/CaptainLinux.md.md)
+- [Captain Linux](https://github.com/Zyanetralys/CTF/blob/main/CaptainLinux.md)
 
 ---
 
