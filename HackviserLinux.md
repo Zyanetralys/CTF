@@ -1,4 +1,5 @@
 # CTF Hackviser Linux
+<img src="https://hackviser.com/img/hackerbox-preview.webp" alt="Hackviser HackerBox Preview" width="600"/>
 
 ## 1 Conectarse a la máquina del examen
 
