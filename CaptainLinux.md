@@ -25,7 +25,6 @@ favorite_movie.txt (archivo protegido)
 
 Listar todos los archivos en la carpeta files: "ls -la files"
 Leer el archivo oculto: "cat files/.favorite_country.txt"
-Salida esperada: italy
 
 ## 4 Contar palabras de un archivo
 
@@ -35,32 +34,25 @@ Salida esperada: 367
 ## 5 Mostrar última línea de un archivo
 
 Mostrar la última línea de emailpass.txt: "tail -n 1 emailpass.txt"
-Salida esperada: michel@securemail.hv
-:pf8Dkpfw24
 
 ## 6 Buscar información específica en un archivo
 
 Buscar el email whoami@securemail.hv
  en emailpass.txt: "grep whoami@securemail.hv
  emailpass.txt"
-Salida esperada: whoami@securemail.hv
-:DeU8CHcpa2
 
 ## 7 Localizar la ruta de un comando
 
 Localizar el comando hello: "which hello"
-Salida esperada: /usr/bin/hello
 
 ## 8 Buscar un archivo de configuración en todo el sistema
 
 Buscar database.conf: "find / -name database.conf 2>/dev/null"
-Salida esperada: /etc/config/database/database.conf
 
 ## 9 Ver permisos de un archivo protegido (favorite_movie.txt)
 
 Ver permisos del archivo: "ls -l favorite_movie.txt"
 Problema: El archivo tiene permisos 0000 y no puede leerse directamente.
-Salida típica: ---------- 1 captain captain 13 Mar 23 2024 favorite_movie.txt
 Intentar leer el archivo: "cat favorite_movie.txt" → Permission denied
 
 Solución
@@ -71,7 +63,6 @@ El archivo tiene permisos 0000, propietario captain, tamaño 13 bytes.
 Dar permisos de lectura al propietario: "chmod 400 /home/captain/favorite_movie.txt"
 Verificar: "ls -l /home/captain/favorite_movie.txt"
 Leer el archivo: "cat /home/captain/favorite_movie.txt"
-Salida: interestellar
 
 ### Método 2: Copiar archivo si chmod no funciona
 Copiar el archivo: "cp /home/captain/favorite_movie.txt /tmp/movie_copy.txt"
@@ -105,7 +96,7 @@ moment.txt → contar palabras
 
 emailpass.txt → contiene pares email:password
 
-favorite_movie.txt → protegido, contenido: interestellar
+favorite_movie.txt → protegido
 
 =========================
 
@@ -136,9 +127,6 @@ Respuesta del examen: "Becket"
 Navegar a la carpeta: "C:\Users\Administrator\Desktop"
 
 Comando: "icacls myprograms"
-
-Salida exacta del examen:
-"myprograms WIN-FND\r.becket:(OI)(CI)(RX) NT AUTHORITY\SYSTEM:(I)(OI)(CI)(F) BUILTIN\Administrators:(I)(OI)(CI)(F) WIN-FND\Administrator:(I)(OI)(CI)(F) Successfully processed 1 files; Failed processing 0 files"
 
 ## 2.3 Servicios
 
