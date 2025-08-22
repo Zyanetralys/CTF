@@ -6,7 +6,7 @@
 Conectarse usando SSH con el usuario y la contraseña del examen.
 Comando: "ssh captain@<IP_DEL_EXAMEN> -p 22"
 Password: shadow
-Reemplaza <IP_DEL_EXAMEN> con la IP que te den.
+
 ## 2 Navegar al directorio home del usuario
 
 Ir al directorio home de captain: "cd /home/captain"
@@ -19,7 +19,7 @@ moment.txt
 
 files/
 
-favorite_movie.txt (archivo protegido, no legible directamente)
+favorite_movie.txt (archivo protegido)
 
 ## 3 Explorar directorios y archivos ocultos
 
@@ -85,7 +85,7 @@ Leer salida: "cat /tmp/movie_output.txt"
 Ver información del inodo: "stat /home/captain/favorite_movie.txt"
 Buscar links duros: "find / -inum <NUMERO_INODO> 2>/dev/null"
 
-### Resumen
+### Acción
 Cambiar permisos: "chmod 644 /home/captain/favorite_movie.txt"
 Leer archivo: "cat /home/captain/favorite_movie.txt"
 Si falla chmod:
