@@ -1,6 +1,6 @@
 # Índice de Operaciones, Retos y CTF – Zyanetralys
 
-> *"la capacidad se demuestra día a día en las Proving Grounds."*  
+> *"la capacidad se demuestra día a día en las Proving Grounds."*
 
 Bienvenido al **Centro de Mando de Operaciones CTF** de Zyanetralys, donde se recopilan, analizan y documentan las misiones de entrenamiento en ciberseguridad.
 
@@ -55,6 +55,10 @@ Cada operación se trata desde la ética y la profesionalidad, no se apoya el us
 Este contenido es únicamente con fines educativos y de entrenamiento técnico.
 
 ---
+
+<p align="center">
+  <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExa2JrcXRqMDJ4YmpqM2l0dW92bHRtYmFrMnQxa3owYzRybmtmMDA4ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/fwoOoDZpEpdQewQdRR/giphy.gif" />
+</p>
 
 — *Zyanetralys*
 
