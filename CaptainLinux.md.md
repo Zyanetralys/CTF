@@ -4,10 +4,10 @@
 ## 1 Conectarse a la máquina del examen
 
 Conectarse usando SSH con el usuario y la contraseña del examen.
-Comando: "ssh captain@<IP_DEL_EXAMEN> -p 22"
+Comando: "ssh captain@<IP> -p 22"
 Password: shadow
 
-## 2 Navegar al directorio home del usuario
+## 2 Home
 
 Ir al directorio home de captain: "cd /home/captain"
 Listar todos los archivos: "ls -a"
