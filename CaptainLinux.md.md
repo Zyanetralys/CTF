@@ -1,5 +1,5 @@
 # CTF Captain Linux
-<img src="https://pbs.twimg.com/profile_images/824801278614204416/x9uWuwPm_400x400.jpg" alt="Hackviser HackerBox Preview" width="300"/>
+<img src="https://pbs.twimg.com/profile_images/824801278614204416/x9uWuwPm_400x400.jpg" width="300"/>
 
 ## 1 Conectarse a la máquina del examen
 
