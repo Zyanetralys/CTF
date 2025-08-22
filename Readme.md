@@ -25,7 +25,7 @@ Bienvenido al **Centro de Mando de Operaciones CTF** de Zyanetralys, donde se re
 - 🚧 Planificación estratégica en curso.
 
 ### 📂 Retos
-- [Hackviser Linux](https://github.com/Zyanetralys/CTF/blob/main/Hackviser.md)
+- [Hackviser Linux](https://github.com/Zyanetralys/CTF/blob/main/HackviserLinux.md)
 
 ---
 
