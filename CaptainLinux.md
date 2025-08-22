@@ -110,8 +110,6 @@ favorite_movie.txt → protegido, contenido: interestellar
 
 ==========================
 
-<img src="https://hackviser.com/img/hackerbox-preview.webp" width="300"/>
-
 # PARTE 2 CTF
 
 Conexión a la máquina
