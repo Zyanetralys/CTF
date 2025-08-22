@@ -1,4 +1,4 @@
-# CTF Hackviser
+# CTF Hackviser Linux
 
 ## 1 Conectarse a la máquina del examen
 
