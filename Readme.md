@@ -1,4 +1,4 @@
-# Índice de Operaciones CTF – Zyanetralys
+# Índice de Operaciones, Retos y CTF – Zyanetralys
 
 > *"la capacidad se demuestra día a día en las Proving Grounds."*  
 
@@ -23,6 +23,15 @@ Bienvenido al **Centro de Mando de Operaciones CTF** de Zyanetralys, donde se re
 
 ### 📂 The Hackers Lab
 - 🚧 Planificación estratégica en curso.
+
+### 📂 Python
+- [Codewars](https://github.com/Zyanetralys/Codewars)
+- [CódigoFacilitoPython](https://github.com/Zyanetralys/Python)
+
+### 📂 SQL
+- [Lost at SQL](https://github.com/Zyanetralys/SQL-Lost-at-SQL)
+- [SQL Police Department](https://github.com/Zyanetralys/SQL-Police-Department-exercises)
+
 
 ### 📂 Retos
 - [Hackviser Linux](https://github.com/Zyanetralys/CTF/blob/main/HackviserLinux.md)
