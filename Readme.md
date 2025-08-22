@@ -22,7 +22,7 @@ Bienvenido al **Centro de Mando de Operaciones CTF** de Zyanetralys, donde se re
 - 🚧 Próximamente. Se están trazando rutas de infiltración.
 
 ### 📂 The Hackers Lab
-- 🚧 Planificación estratégica en curso.
+- 🚧 Planificación en curso.
 
 ### 📂 Python
 - [Codewars](https://github.com/Zyanetralys/Codewars)
