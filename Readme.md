@@ -164,21 +164,6 @@ Este arsenal está diseñado para:
 ```
 ---
 
-## 💬 CONTACT PROTOCOLS
-
-```
-[ENCRYPTED CHANNELS AVAILABLE]
-
-📡 Secure Communications: github.com/Zyanetralys
-🎯 Mission Updates: Check commit history
-💀 Battle Reports: Issue tracker open
-⚡ Emergency Contact: PGP key available on request
-```
-
----
-
-## 🎪 DIGITAL SIGNATURE
-
 ```
      ██████  ▓██   ██▓ ▄▄▄       ███▄    █ ▓█████▄▄▄█████▓ ██▀███   ▄▄▄       ██▓    ▓██   ██▓  ██████ 
    ▒██    ▒   ▒██  ██▒▒████▄     ██ ▀█   █ ▓█   ▀▓  ██▒ ▓▒▓██ ▒ ██▒▒████▄    ▓██▒     ▒██  ██▒▒██    ▒ 
