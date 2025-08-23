@@ -1,6 +1,6 @@
 # Telnet Recon
 
-## MISIÓN: Reconocimiento, acceso y análisis de la máquina Telnet Arrow
+## MISIÓN: Reconocimiento, acceso y análisis
 ## NIVEL: Básico/Intermedio
 
 ## CONECTIVIDAD
