@@ -21,39 +21,110 @@ Este repo es mi arsenal personal, documento algunas de las batallas ganadas.
 [████████████████████████████████████████] 100% PROVING
 ```
 
-### 💀 **VulnHub - CONQUERED TERRITORIES**
-- **[Empire Breakout](https://github.com/Zyanetralys/CTF/blob/main/EmpireBreakout.md)** `[PWNED]` - *Imperio derribado, lecciones aprendidas*
-- **[The Planets: Earth](https://github.com/Zyanetralys/CTF/blob/main/ThePlanetsEarh.md)** `[ROOTED]` - *Planeta conquistado*
+## 🛠️ **TECHNICAL ARSENAL**
 
-### 🌙 **The Hackers Lab - NIGHT RAIDS**
-- **[Bandit](https://github.com/Zyanetralys/CTF/blob/main/Bandit.md)** `[INFILTRATED]` - *SSH keys are my jewelry*
+<table>
+<tr>
+<td width="50%">
 
-### 🏴‍☠️ **HackTheBox - BOUNTY HUNTING**
+### **Security Tools**
+![Kali](https://img.shields.io/badge/Kali%20Linux-557C94?style=flat-square&logo=kali-linux&logoColor=white)
+![Metasploit](https://img.shields.io/badge/Metasploit-ED1C24?style=flat-square)
+![Burp Suite](https://img.shields.io/badge/Burp%20Suite-FF6633?style=flat-square)
+![Nmap](https://img.shields.io/badge/Nmap-4682B4?style=flat-square)
+![Wireshark](https://img.shields.io/badge/Wireshark-1679A7?style=flat-square)
+
+</td>
+<td width="50%">
+
+### **Programming & Databases**
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
+![SQL](https://img.shields.io/badge/SQL-4479A1?style=flat-square&logo=mysql&logoColor=white)
+![PowerShell](https://img.shields.io/badge/PowerShell-5391FE?style=flat-square&logo=powershell&logoColor=white)
+![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black)
+
+</td>
+</tr>
+</table>
+
+---
+
+## 🏆 **CTF ACHIEVEMENTS & WRITEUPS**
+
+<div align="center">
+
+### 🚩 **COMPREHENSIVE CTF PORTFOLIO**
+*Complete analysis and solutions for various cybersecurity challenges*
+
+</div>
+
+| 🎯 **Challenge** | 🔧 **Category** | 🏟️ **Platform** | 📊 **Status** | 📖 **Writeup** |
+|------------------|-----------------|------------------|---------------|-----------------|
+| Empire Breakout | | VulnHub | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/CTF/blob/main/EmpireBreakout.md) |
+| The Planets: Earth |  | VulnHub | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/CTF/blob/main/ThePlanetsEarh.md) |
+| Captain Linux |  | Hackviser | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/CTF/blob/main/CaptainLinux.md) |
+| Windows RDC |  | Hackviser | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/CTF/blob/main/Windows_RDC) |
+| Bandit |  | Hackviser | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/CTF/blob/main/Bandit.md) |
+
+---
+
+## 🏃 **COMPETITIONS**
+
+<div align="center">
+
+| 🏆 **Achievement** | 📅 **Date** | 🎖️ **Recognition** | 📜 **Details** |
+|--------------------|-------------|-------------------|----------------|
+| Pentesting Pro Hacker Mentor | 2025 | 🥇 **Professional Level** | [🔗 Report](.) |
+
+---
+
+## 🏅 **CERTIFICATIONS**
+
 ```
 Status: [LOADING WEAPONS...]
 ETA: Soon™
 ```
 
-### 🔥 **TryHackMe - TRAINING GROUNDS**
-```
-Status: [RECONNAISSANCE PHASE]
-Threat Level: MAXIMUM
-```
+<div align="center">
 
-### 🐍 **Python - MY DIGITAL KATANA**
-- **[Codewars](https://github.com/Zyanetralys/Codewars)** `[DOJO MASTER]` - *Where algorithms bow to my will*
-- **[CódigoFacilito](https://github.com/Zyanetralys/Python)** `[SENSEI MODE]` - *Teaching machines to think like me*
+| 🏆 **Achievement** | 📅 **Date** | 🎖️ **Recognition** | 📜 **Details** |
+|--------------------|-------------|-------------------|----------------|
+| - |  | 🥇 **-** | [🔗 Report](.) |
 
-### 💊 **SQL - DATABASE ASSASSIN**
-- **[Lost at SQL](https://github.com/Zyanetralys/SQL-Lost-at-SQL)** `[NEVER LOST]` - *Databases have no secrets from me*
-- **[SQL Police Dept](https://github.com/Zyanetralys/SQL-Police-Department-exercises)** `[CASE CLOSED]` - *Justice served with SELECT statements*
-
-### ⚡ **SPECIAL CHALLENGES - BOSS FIGHTS**
-- **[Captain Linux](https://github.com/Zyanetralys/CTF/blob/main/CaptainLinux.md)** `[CAPTAIN DEFEATED]`
-- **[Windows RDC](https://github.com/Zyanetralys/CTF/blob/main/Windows_RDC)** `[SYSTEM COMPROMISED]`
-- **[Windows PowerShell](https://github.com/Zyanetralys/CTF/blob/main/Windows_Powershell.md)** `[SHELL TAMED]`
+</div>
 
 ---
+
+## 🏅 **DEVELOPMENT**
+
+<div align="center">
+
+| 🎯 **Challenge** | 🔧 **Category** | 🏟️ **Platform** | 📊 **Status** | 📖 **Writeup** |
+|------------------|-----------------|------------------|---------------|-----------------|
+| CTF Analisis | Pentesting writeups & methodologies| General | ✅ Improving | [📋 Analysis](https://github.com/Zyanetralys/CTF) |
+| Python Quests | Programming | Codewars | ✅ Improving | [📋 Analysis](https://github.com/Zyanetralys/Codewars) |
+| Python Quests | Programming | Codigo Facilito | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/Python) |
+| SQL Quests | Programming | Codewars | ✅ Improving | [📋 Analysis](https://github.com/iceYami/Codewars) |
+| SQL Quests | Programming | SQL Police Department | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/SQL) |
+| SQL Quests | Programming | LostatSQL | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/SQL) |
+
+</div>
+
+### 🏴‍☠️ BOUNTY HUNTING**
+```
+Status: [LOADING WEAPONS...]
+ETA: Soon™
+```
+
+
+| 🏆 **Achievement** | 📅 **Date** | 🎖️ **Recognition** | 📜 **Details** |
+|--------------------|-------------|-------------------|----------------|
+| - |  | 🥇 **-** | [🔗 Report](.) |
+
+```
+
+```
+
 
 ## 🎭 MISSION STATEMENT
 
