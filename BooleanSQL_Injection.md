@@ -1,7 +1,6 @@
-# CTF Boolean-Based Blind SQLi Lab
+# CTF Boolean-Based Blind SQL Injection
 
 ## Información
-- **URL**: https://cunning-polaris.europe1.hackviser.space/
 - **Tipo**: Boolean-Based Blind SQL Injection
 - **Objetivo**: Extraer el nombre de la base de datos
 
