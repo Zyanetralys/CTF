@@ -52,7 +52,7 @@ Este repo es mi arsenal personal, documento algunas de las batallas ganadas.
 ## 🏆 **CTF**
 
 
-### 🚩 **COMPREHENSIVE CTF PORTFOLIO**
+## 🚩 **COMPREHENSIVE CTF PORTFOLIO**
 
 <div align="center">
 
