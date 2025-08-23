@@ -6,7 +6,7 @@ Respuesta: Get-Runspace
 
 Cantidad de libros en Documents\Books
 Comando: "Get-ChildItem C:\Users\Administrator\Documents\Books | Measure-Object"
-Respuesta: 1
+Respuesta: 9
 
 Cmdlet para mostrar procesos activos en el sistema
 Comando: "Get-Process"
