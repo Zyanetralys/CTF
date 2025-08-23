@@ -163,25 +163,6 @@ Este arsenal está diseñado para:
 ❌ NO para acceso no autorizado
 ❌ NO para dañar sistemas ajenos
 ```
-
----
-
-## 🔥 POWER STATS
-
-```
-SKILLS UNLOCKED:
-┌─────────────────────────────────────┐
-│ Linux Exploitation    ████████ xx%  │
-│ Windows Pentesting    ███████  xx%  │
-│ Web Application       ████████ xx%  │
-│ Network Analysis      ██████   xx%  │
-│ Python Scripting      █████████ xx% │
-│ SQL Injection         ████████ xx%  │
-│ Social Engineering    ██████   xx%  │
-│ Reverse Engineering   █████    xx%  │
-└─────────────────────────────────────┘
-```
-
 ---
 
 ## 💬 CONTACT PROTOCOLS
