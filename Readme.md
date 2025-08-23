@@ -51,12 +51,11 @@ Este repo es mi arsenal personal, documento algunas de las batallas ganadas.
 
 ## 🏆 **CTF**
 
-<div align="center">
 
 ### 🚩 **COMPREHENSIVE CTF PORTFOLIO**
-*Complete analysis and solutions for various cybersecurity challenges*
 
-</div>
+<div align="center">
+
 
 | 🎯 **Challenge** | 🔧 **Category** | 🏟️ **Platform** | 📊 **Status** | 📖 **Writeup** |
 |------------------|-----------------|------------------|---------------|-----------------|
