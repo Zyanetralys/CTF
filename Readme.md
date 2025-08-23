@@ -110,7 +110,7 @@ ETA: Soon™
 
 </div>
 
-### 🏴‍☠️ BOUNTY HUNTING**
+### 🏴‍☠️ **BOUNTY HUNTING**
 ```
 Status: [LOADING WEAPONS...]
 ETA: Soon™
