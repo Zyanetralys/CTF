@@ -116,10 +116,14 @@ Status: [LOADING WEAPONS...]
 ETA: Soon™
 ```
 
+<div align="center">
+
 
 | 🏆 **Achievement** | 📅 **Date** | 🎖️ **Recognition** | 📜 **Details** |
 |--------------------|-------------|-------------------|----------------|
 | - |  | 🥇 **-** | [🔗 Report](.) |
+
+</div>
 
 ```
 
