@@ -8,8 +8,6 @@
     ╚══════════════════════════════════════════════════════════════╝
 ```
 
-![RvBGIF](https://64.media.tumblr.com/tumblr_mbt5dqb3CW1rhp124o2_400.gif)
-
 **Padawan · Digital Warfare Trainee**
 
 Este repo es mi arsenal personal, documento algunas de las batallas ganadas.
@@ -53,6 +51,7 @@ Este repo es mi arsenal personal, documento algunas de las batallas ganadas.
 
 ## 🏆 **CTF**
 
+![RvBGIF](https://64.media.tumblr.com/tumblr_mbt5dqb3CW1rhp124o2_400.gif)
 
 ## 🚩 **COMPREHENSIVE CTF PORTFOLIO**
 
