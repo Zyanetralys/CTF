@@ -49,7 +49,7 @@ Este repo es mi arsenal personal, documento algunas de las batallas ganadas.
 
 ---
 
-## 🏆 **CTF ACHIEVEMENTS & WRITEUPS**
+## 🏆 **CTF**
 
 <div align="center">
 
@@ -66,6 +66,8 @@ Este repo es mi arsenal personal, documento algunas de las batallas ganadas.
 | Windows RDC |  | Hackviser | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/CTF/blob/main/Windows_RDC) |
 | Bandit |  | Hackviser | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/CTF/blob/main/Bandit.md) |
 
+</div>
+
 ---
 
 ## 🏃 **COMPETITIONS**
@@ -78,12 +80,10 @@ Este repo es mi arsenal personal, documento algunas de las batallas ganadas.
 
 ---
 
-## 🏅 **CERTIFICATIONS**
+</div>
 
-```
-Status: [LOADING WEAPONS...]
-ETA: Soon™
-```
+
+## 🏅 **CERTIFICATIONS**
 
 <div align="center">
 
@@ -111,10 +111,6 @@ ETA: Soon™
 </div>
 
 ### 🏴‍☠️ **BOUNTY HUNTING**
-```
-Status: [LOADING WEAPONS...]
-ETA: Soon™
-```
 
 <div align="center">
 
