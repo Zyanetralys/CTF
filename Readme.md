@@ -36,6 +36,7 @@ Bienvenido al **Centro de Mando de Operaciones CTF** de Zyanetralys, donde se re
 ### 📂 Retos
 - [Captain Linux](https://github.com/Zyanetralys/CTF/blob/main/CaptainLinux.md)
 - [Windows RDC](https://github.com/Zyanetralys/CTF/blob/main/Windows_RDC)
+- [Windows Powershell](https://github.com/Zyanetralys/CTF/blob/main/Windows_Powershell.md)
 
 ---
 
