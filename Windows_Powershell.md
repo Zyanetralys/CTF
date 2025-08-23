@@ -59,7 +59,7 @@ Get-LocalGroup | Where-Object {$_.Description -like "*certificate*"}
 ```powershell
 systeminfo | findstr /B /C:"OS Build"
 ```
-**Nota:** Verificar salida específica del sistema objetivo
+**Resultado:** 10.0.17763 N/A Build 17763
 
 ### 9. Historial de Actualizaciones
 **Objetivo:** Identificar HotFixID instalado
