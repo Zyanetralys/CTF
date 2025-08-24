@@ -23,11 +23,13 @@ Este repo es mi arsenal personal, documento algunas de las batallas ganadas.
 
 ## 🛠️ **TECHNICAL ARSENAL**
 
+<div align="center">
+    
 <table>
 <tr>
 <td width="50%">
 
-### **Security Tools**
+### **Tools**
 ![Kali](https://img.shields.io/badge/Kali%20Linux-557C94?style=flat-square&logo=kali-linux&logoColor=white)
 ![Metasploit](https://img.shields.io/badge/Metasploit-ED1C24?style=flat-square)
 ![Burp Suite](https://img.shields.io/badge/Burp%20Suite-FF6633?style=flat-square)
@@ -37,11 +39,13 @@ Este repo es mi arsenal personal, documento algunas de las batallas ganadas.
 </td>
 <td width="50%">
 
-### **Programming & Databases**
+### **Programming**
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
 ![SQL](https://img.shields.io/badge/SQL-4479A1?style=flat-square&logo=mysql&logoColor=white)
 ![PowerShell](https://img.shields.io/badge/PowerShell-5391FE?style=flat-square&logo=powershell&logoColor=white)
 ![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black)
+
+</div>
 
 </td>
 </tr>
