@@ -107,14 +107,14 @@ Este repo es mi arsenal personal, documento algunas de las batallas ganadas.
 
 <div align="center">
 
-| 🎯 **Challenge** | 🔧 **Category** | 🏟️ **Platform** | 📊 **Status** | 📖 **Writeup** |
+| 🎯 **Challenge** | 🏟️ **Platform** | 📊 **Status** | 📖 **Writeup** |
 |------------------|-----------------|------------------|---------------|-----------------|
-| CTF Analisis | Pentesting writeups & methodologies| General | ✅ Improving | [📋 Analysis](https://github.com/Zyanetralys/CTF) |
-| Python Quests | Programming | Codewars | ✅ Improving | [📋 Analysis](https://github.com/Zyanetralys/Codewars) |
-| Python Quests | Programming | Codigo Facilito | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/Python) |
-| SQL Quests | Programming | Codewars | ✅ Improving | [📋 Analysis](https://github.com/iceYami/Codewars) |
-| SQL Quests | Programming | SQL Police Department | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/SQL) |
-| SQL Quests | Programming | LostatSQL | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/SQL) |
+| CTF Analisis | ✅ Improving | [📋 Analysis](https://github.com/Zyanetralys/CTF) |
+| Python Quests | Codewars | ✅ Improving | [📋 Analysis](https://github.com/Zyanetralys/Codewars) |
+| Python Quests | Codigo Facilito | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/Python) |
+| SQL Quests | Codewars | ✅ Improving | [📋 Analysis](https://github.com/iceYami/Codewars) |
+| SQL Quests | SQL Police Department | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/SQL) |
+| SQL Quests | LostatSQL | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/SQL) |
 
 </div>
 
