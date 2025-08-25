@@ -78,19 +78,20 @@ Este repo es mi arsenal personal, documento algunas de las batallas ganadas.
 
 ---
 
+<div align="center">
+    
 ## 🏃 **COMPETITIONS**
 
-<div align="center">
-
-| 🏆 **Achievement** | 📅 **Date** | 🎖️ **Recognition** | 📜 **Details** |
-|--------------------|-------------|-------------------|----------------|
-| Pentesting Pro Hacker Mentor | 2025 | 🥇 **Professional Level** | [🔗 Report](.) |
-| WiFiChallenge Lab | 2025 | 🥇 **Professional Level** | [🔗 Report](https://github.com/Zyanetralys/CTF/blob/main/PentestingCTF.md) |
-
----
+| 🏆 Achievement | 📅 Date | 🎖️ Recognition | 📜 Details |
+|---|---|---|---|
+| Pentesting Pro Hacker Mentor | 2025 | 🥇 Professional Level | [🔗 Report](https://github.com/Zyanetralys) |
+| WiFiChallenge Lab | 2025 | 🥇 Professional Level | [🔗 Report](https://github.com/Zyanetralys/CTF/blob/main/PentestingCTF.md) |
 
 </div>
 
+---
+
+<div align="center">
 
 ## 🏅 **CERTIFICATIONS**
 
