@@ -67,7 +67,7 @@ Este repo es mi arsenal personal, documento algunas de las batallas ganadas.
 
 
 | 🎯 **Challenge** | 🏟️ **Platform** | 📊 **Status** | 📖 **Writeup** |
-|------------------|-----------------|------------------|---------------|-----------------|
+|------------------|-----------------|------------------|---------------|
 | Empire Breakout | VulnHub | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/CTF/blob/main/EmpireBreakout.md) |
 | The Planets: Earth  | VulnHub | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/CTF/blob/main/ThePlanetsEarh.md) |
 | Captain Linux |  Hackviser | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/CTF/blob/main/CaptainLinux.md) |
