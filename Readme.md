@@ -86,6 +86,7 @@ Este repo es mi arsenal personal, documento algunas de las batallas ganadas.
 |--------------------|-------------|-------------------|----------------|
 | Pentesting Pro Hacker Mentor | 2025 | 🥇 **Professional Level** | [🔗 Report](.) |
 | WiFiChallenge Lab | 2025 | 🥇 **Professional Level** | [🔗 Report](https://github.com/Zyanetralys/CTF/blob/main/PentestingCTF.md) |
+
 ---
 
 </div>
