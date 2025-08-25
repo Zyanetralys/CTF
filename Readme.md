@@ -1,4 +1,5 @@
 # ZYANETRALYS CYBER ARSENAL
+
 ```
     ╔══════════════════════════════════════════════════════════════╗
     ║                                                              ║  
@@ -23,12 +24,6 @@ Este repo es mi arsenal personal, documento algunas de las batallas ganadas.
 
 ## 🛠️ **TECHNICAL ARSENAL**
 
-<div align="center">
-    
-<table>
-<tr>
-<td width="50%">
-
 ### **Tools**
 ![Kali](https://img.shields.io/badge/Kali%20Linux-557C94?style=flat-square&logo=kali-linux&logoColor=white)
 ![Metasploit](https://img.shields.io/badge/Metasploit-ED1C24?style=flat-square)
@@ -36,50 +31,30 @@ Este repo es mi arsenal personal, documento algunas de las batallas ganadas.
 ![Nmap](https://img.shields.io/badge/Nmap-4682B4?style=flat-square)
 ![Wireshark](https://img.shields.io/badge/Wireshark-1679A7?style=flat-square)
 
-</td>
-<td width="50%">
-
 ### **Programming**
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
 ![SQL](https://img.shields.io/badge/SQL-4479A1?style=flat-square&logo=mysql&logoColor=white)
 ![PowerShell](https://img.shields.io/badge/PowerShell-5391FE?style=flat-square&logo=powershell&logoColor=white)
 ![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black)
 
-</div>
-
-</td>
-</tr>
-</table>
-
 ---
 
 ## 🏆 **CTF**
 
-<div align="center">
-    
 ![RvBGIF](https://64.media.tumblr.com/tumblr_mbt5dqb3CW1rhp124o2_400.gif)
-
-</div>
 
 ## 🚩 **COMPREHENSIVE CTF PORTFOLIO**
 
-<div align="center">
-
-
 | 🎯 **Challenge** | 🏟️ **Platform** | 📊 **Status** | 📖 **Writeup** |
-|------------------|-----------------|------------------|---------------|
+|---|---|---|---|
 | Empire Breakout | VulnHub | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/CTF/blob/main/EmpireBreakout.md) |
-| The Planets: Earth  | VulnHub | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/CTF/blob/main/ThePlanetsEarh.md) |
-| Captain Linux |  Hackviser | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/CTF/blob/main/CaptainLinux.md) |
-| Windows RDC |  Hackviser | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/CTF/blob/main/Windows_RDC) |
-| Bandit |  Hackviser | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/CTF/blob/main/Bandit.md) |
-
-</div>
+| The Planets: Earth | VulnHub | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/CTF/blob/main/ThePlanetsEarh.md) |
+| Captain Linux | Hackviser | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/CTF/blob/main/CaptainLinux.md) |
+| Windows RDC | Hackviser | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/CTF/blob/main/Windows_RDC) |
+| Bandit | Hackviser | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/CTF/blob/main/Bandit.md) |
 
 ---
 
-<div align="center">
-    
 ## 🏃 **COMPETITIONS**
 
 | 🏆 Achievement | 📅 Date | 🎖️ Recognition | 📜 Details |
@@ -87,54 +62,34 @@ Este repo es mi arsenal personal, documento algunas de las batallas ganadas.
 | Pentesting Pro Hacker Mentor | 2025 | 🥇 Professional Level | [🔗 Report](https://github.com/Zyanetralys) |
 | WiFiChallenge Lab | 2025 | 🥇 Professional Level | [🔗 Report](https://github.com/Zyanetralys/CTF/blob/main/PentestingCTF.md) |
 
-</div>
-
 ---
-
-<div align="center">
 
 ## 🏅 **CERTIFICATIONS**
 
-<div align="center">
-
 | 🏆 **Achievement** | 📅 **Date** | 🎖️ **Recognition** | 📜 **Details** |
-|--------------------|-------------|-------------------|----------------|
-| - |  | 🥇 **-** | [🔗 Report](.) |
-
-</div>
+|---|---|---|---|
+| - | - | 🥇 **-** | [🔗 Report](.) |
 
 ---
 
 ## 🏅 **DEVELOPMENT**
 
-<div align="center">
-
 | 🎯 **Challenge** | 🏟️ **Platform** | 📊 **Status** | 📖 **Writeup** |
-|------------------|-----------------|------------------|---------------|-----------------|
-| CTF Analisis | ✅ Improving | [📋 Analysis](https://github.com/Zyanetralys/CTF) |
+|---|---|---|---|
+| CTF Analisis | - | ✅ Improving | [📋 Analysis](https://github.com/Zyanetralys/CTF) |
 | Python Quests | Codewars | ✅ Improving | [📋 Analysis](https://github.com/Zyanetralys/Codewars) |
 | Python Quests | Codigo Facilito | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/Python) |
 | SQL Quests | Codewars | ✅ Improving | [📋 Analysis](https://github.com/iceYami/Codewars) |
 | SQL Quests | SQL Police Department | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/SQL) |
 | SQL Quests | LostatSQL | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/SQL) |
 
-</div>
-
 ### 🏴‍☠️ **BOUNTY HUNTING**
 
-<div align="center">
-
-
 | 🏆 **Achievement** | 📅 **Date** | 🎖️ **Recognition** | 📜 **Details** |
-|--------------------|-------------|-------------------|----------------|
-| - |  | 🥇 **-** | [🔗 Report](.) |
+|---|---|---|---|
+| - | - | 🥇 **-** | [🔗 Report](.) |
 
-</div>
-
-```
-
-```
-
+---
 
 ## 🎭 MISSION STATEMENT
 
@@ -173,9 +128,11 @@ Este arsenal está diseñado para:
 ❌ NO para acceso no autorizado
 ❌ NO para dañar sistemas ajenos
 ```
+
 ---
 
 ```
+
      ██████  ▓██   ██▓ ▄▄▄       ███▄    █ ▓█████▄▄▄█████▓ ██▀███   ▄▄▄       ██▓    ▓██   ██▓  ██████ 
    ▒██    ▒   ▒██  ██▒▒████▄     ██ ▀█   █ ▓█   ▀▓  ██▒ ▓▒▓██ ▒ ██▒▒████▄    ▓██▒     ▒██  ██▒▒██    ▒ 
    ░ ▓██▄      ▒██ ██░▒██  ▀█▄  ▓██  ▀█ ██▒▒███  ▒ ▓██░ ▒░▓██ ░▄█ ▒▒██  ▀█▄  ▒██░      ▒██ ██░░ ▓██▄   
