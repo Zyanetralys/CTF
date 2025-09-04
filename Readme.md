@@ -4,7 +4,7 @@
     ╔══════════════════════════════════════════════════════════════╗
     ║                                                              ║  
     ║     "Los sistemas caen, los códigos se rompen,               ║
-    ║      pero una hacker no se rinde."                           ║
+    ║      pero nosotros,  no podemos rendirnos                    ║
     ║                                                              ║
     ╚══════════════════════════════════════════════════════════════╝
 ```
