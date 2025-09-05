@@ -51,7 +51,7 @@ Este repo es mi arsenal personal, documento algunas de las batallas ganadas.
 | The Planets: Earth | VulnHub | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/CTF/blob/main/ThePlanetsEarh.md) |
 | Captain Linux | Hackviser | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/CTF/blob/main/CaptainLinux.md) |
 | Windows RDC | Hackviser | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/CTF/blob/main/Windows_RDC) |
-| Bandit | Hackviser | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/CTF/blob/main/Bandit.md) |
+| Bandit | OverTheWire | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/CTF/blob/main/Bandit.md) |
 
 ---
 
