@@ -45,15 +45,23 @@ Este repo es mi arsenal personal, documento algunas de las batallas ganadas.
 
 ## 🚩 **COMPREHENSIVE CTF PORTFOLIO**
 
-| 🎯 **Challenge** | 🏟️ **Platform** | 📊 **Status** | 📖 **Writeup** |
-|---|---|---|---|
-| Empire Breakout | VulnHub | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/CTF/blob/main/EmpireBreakout.md) |
-| The Planets: Earth | VulnHub | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/CTF/blob/main/ThePlanetsEarh.md) |
-| Captain Linux | Hackviser | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/CTF/blob/main/CaptainLinux.md) |
-| Windows RDC | Hackviser | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/CTF/blob/main/Windows_RDC) |
-| Bandit | OverTheWire | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/CTF/blob/main/Bandit.md) |
-| ProFTPD_CVE-2015-3306 | Hackviser | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/CTF/blob/main/ProFTPD_CVE-2015-3306.md) |
-| QueryGate | VulnHub | ✅ SQL Injection Completed | [📋 Analysis](https://github.com/Zyanetralys/CTF/blob/main/MySQL%20Query%20Gate.md) |
+
+| 🎯 **Challenge** | 🏟️ **Platform** | 🔧 **Category** | 📊 **Status** | 📖 **Writeup** |
+|---|---|---|---|---|
+| Empire Breakout | VulnHub | 🖥️ Boot2Root | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/CTF/blob/main/EmpireBreakout.md) |
+| The Planets: Earth | VulnHub | 🖥️ Boot2Root | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/CTF/blob/main/ThePlanetsEarh.md) |
+| Captain Linux | Hackviser | 🐧 Linux Exploitation | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/CTF/blob/main/CaptainLinux.md) |
+| Windows RDC | Hackviser | 🪟 Windows Exploitation | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/CTF/blob/main/Windows_RDC.md) |
+| Windows PowerShell | Hackviser | 🪟 PowerShell Exploitation | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/CTF/blob/main/Windows_Powershell.md) |
+| Bandit | OverTheWire | 🐧 Linux Basics | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/CTF/blob/main/Bandit.md) |
+| ProFTPD CVE-2015-3306 | Hackviser | 🔓 Vulnerability Exploitation | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/CTF/blob/main/ProFTPD_CVE-2015-3306.md) |
+| QueryGate | VulnHub | 💉 SQL Injection | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/CTF/blob/main/MySQL%20Query%20Gate.md) |
+| Boolean SQL Injection | Custom/Practice | 💉 SQL Injection | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/CTF/blob/main/BooleanSQL_Injection.md) |
+| Gandalf CTF AI | AI Security | 🤖 AI Prompt Injection | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/CTF/blob/main/Gandalf_CTF_AI.md) |
+| PentestingCTF | Custom/Practice | 🔍 General Pentesting | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/CTF/blob/main/PentestingCTF.md) |
+| Secure Command | Custom/Practice | 🔐 Command Injection | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/CTF/blob/main/Secure_Command.md) |
+| Telnet Recon | Custom/Practice | 🔍 Network Reconnaissance | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/CTF/blob/main/Telnet_Recon.md) |
+
 ---
 
 ## 🏃 **COMPETITIONS**
