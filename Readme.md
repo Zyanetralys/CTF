@@ -53,7 +53,7 @@ Este repo es mi arsenal personal, documento algunas de las batallas ganadas.
 | Windows RDC | Hackviser | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/CTF/blob/main/Windows_RDC) |
 | Bandit | OverTheWire | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/CTF/blob/main/Bandit.md) |
 | ProFTPD_CVE-2015-3306 | Hackviser | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/CTF/blob/main/ProFTPD_CVE-2015-3306.md) |
-| QueryGate | SQL Injection | VulnHub | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/CTF/blob/main/MySQL%20Query%20Gate.md) |
+| QueryGate | VulnHub | ✅ SQL Injection Completed | [📋 Analysis](https://github.com/Zyanetralys/CTF/blob/main/MySQL%20Query%20Gate.md) |
 ---
 
 ## 🏃 **COMPETITIONS**
