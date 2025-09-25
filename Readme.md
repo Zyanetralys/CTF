@@ -79,7 +79,7 @@ Este repo es mi arsenal personal, documento algunas de las batallas ganadas.
 ## 🏅 **CERTIFICATIONS**
 
 | 🏆 **Recognition** | 📅 **Date** | 📜 **Details** |
-|---|---|---|---|
+|---|---|---|
 | OSCP | Current | [🔗 Report](.) |
 
 ---
