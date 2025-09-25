@@ -1,4 +1,4 @@
-# ZYANETRALYS CYBER ARSENAL
+# ZYANETRALYS CTF
 
 ```
     ╔══════════════════════════════════════════════════════════════╗
@@ -39,11 +39,9 @@ Este repo es mi arsenal personal, documento algunas de las batallas ganadas.
 
 ---
 
-## 🏆 **CTF**
+## 🏆 **CTF PORTFOLIO**
 
 ![RvBGIF](https://64.media.tumblr.com/tumblr_mbt5dqb3CW1rhp124o2_400.gif)
-
-## 🚩 **COMPREHENSIVE CTF PORTFOLIO**
 
 
 | 🎯 **Challenge** | 🏟️ **Platform** | 🔧 **Category** | 📊 **Status** | 📖 **Writeup** |
@@ -61,6 +59,11 @@ Este repo es mi arsenal personal, documento algunas de las batallas ganadas.
 | PentestingCTF | Custom/Practice | 🔍 General Pentesting | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/CTF/blob/main/PentestingCTF.md) |
 | Secure Command | Custom/Practice | 🔐 Command Injection | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/CTF/blob/main/Secure_Command.md) |
 | Telnet Recon | Custom/Practice | 🔍 Network Reconnaissance | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/CTF/blob/main/Telnet_Recon.md) |
+| Python Quests | Codewars | Python | ✅ Improving | [📋 Analysis](https://github.com/Zyanetralys/Codewars) |
+| Python Quests | Codigo Facilito | Python | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/Python) |
+| SQL Quests | Codewars | SQL | ✅ Improving | [📋 Analysis](https://github.com/iceYami/Codewars) |
+| SQL Quests | SQL Police Department | SQL | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/SQL) |
+| SQL Quests | LostatSQL | SQL | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/SQL) |
 
 ---
 
@@ -75,22 +78,11 @@ Este repo es mi arsenal personal, documento algunas de las batallas ganadas.
 
 ## 🏅 **CERTIFICATIONS**
 
-| 🏆 **Achievement** | 📅 **Date** | 🎖️ **Recognition** | 📜 **Details** |
+| 🏆 **Recognition** | 📅 **Date** | 📜 **Details** |
 |---|---|---|---|
-| - | - | 🥇 **-** | [🔗 Report](.) |
+| OSCP | Current | [🔗 Report](.) |
 
 ---
-
-## 🏅 **DEVELOPMENT**
-
-| 🎯 **Challenge** | 🏟️ **Platform** | 📊 **Status** | 📖 **Writeup** |
-|---|---|---|---|
-| CTF Analisis | - | ✅ Improving | [📋 Analysis](https://github.com/Zyanetralys/CTF) |
-| Python Quests | Codewars | ✅ Improving | [📋 Analysis](https://github.com/Zyanetralys/Codewars) |
-| Python Quests | Codigo Facilito | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/Python) |
-| SQL Quests | Codewars | ✅ Improving | [📋 Analysis](https://github.com/iceYami/Codewars) |
-| SQL Quests | SQL Police Department | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/SQL) |
-| SQL Quests | LostatSQL | ✅ Completed | [📋 Analysis](https://github.com/Zyanetralys/SQL) |
 
 ### 🏴‍☠️ **BOUNTY HUNTING**
 
