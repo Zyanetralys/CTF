@@ -346,3 +346,46 @@ Alta (P0): vulnerabilidades RCE / exposición de datos de pago / credenciales p�
 Media (P1): XSS, CSRF no explotadas en prod, dependencias con CVE moderadas.
 
 Baja (P2): issues de configuración no expuestos.
+
+---
+
+Manual de Cifrado
+
+Cifrar infraestructura cloud, bases de datos, endpoints y móviles (cumplir GDPR y PCI DSS).
+
+# Cifrado en tránsito TLS (linux)
+- /etc/nginx: 
+- /etc/letsencrypt/live
+
+## Certbot 
+Open-source que automatiza la obtención y renovación de certificados TLS de Let’s Encrypt,
+Let’s Encrypt es la Autoridad de Certificación gratuita que emite los certificados que dicen que el dominio es tu propiedad.
+Otra alternativa podría ser acme.sh
+
+**Instalación**
+Actualizamos los repos (IMPORTANTE)
+**sudo apt update**
+
+Instalamos el servicio que permite instalar paquetes snap que utiliza Certbot
+**sudo apt install -y snapd**
+
+Creamos el enlace para que certbot sea accesible como cualquier otro binario y pueda ejecutarse en /usr/bin
+sudo ln -s /snap/bin/certbot /usr/bin/certbot
+
+### Obtener el certificado
+--nginx le dice a Certbot que use el plugin nginx, hará la validación (HTTP-01), obtendrá el certificado y modificará tu bloque de servidor para añadir ssl_certificate/ssl_certificate_key y redirección a HTTPS si aceptas.
+**sudo certbot --nginx -d example.com -d <URL>**
+Otra alternativa es hacerlo no interactivo.
+
+**Ficheros del certificado**
+**sudo certbot certificates**
+/etc/letsencrypt/live/
+
+**Renovación**
+Debería hacerla automáticamente.
+
+# Cifrado de endpoints
+
+Cloud: GCP y Azure: panel/Encryption = “Enabled”.
+Windows: BitLocker, estado del disco,  “On”.
+Linux: VeraCrypt.
