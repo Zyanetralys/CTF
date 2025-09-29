@@ -349,15 +349,15 @@ Baja (P2): issues de configuración no expuestos.
 
 ---
 
-Manual de Cifrado
+# Manual de Cifrado
 
 Cifrar infraestructura cloud, bases de datos, endpoints y móviles (cumplir GDPR y PCI DSS).
 
-# Cifrado en tránsito TLS (linux)
+## Cifrado en tránsito TLS (linux)
 - /etc/nginx: 
 - /etc/letsencrypt/live
 
-## Certbot 
+### Certbot 
 Open-source que automatiza la obtención y renovación de certificados TLS de Let’s Encrypt,
 Let’s Encrypt es la Autoridad de Certificación gratuita que emite los certificados que dicen que el dominio es tu propiedad.
 Otra alternativa podría ser acme.sh
@@ -372,7 +372,7 @@ Instalamos el servicio que permite instalar paquetes snap que utiliza Certbot
 Creamos el enlace para que certbot sea accesible como cualquier otro binario y pueda ejecutarse en /usr/bin
 sudo ln -s /snap/bin/certbot /usr/bin/certbot
 
-### Obtener el certificado
+#### Obtener el certificado
 --nginx le dice a Certbot que use el plugin nginx, hará la validación (HTTP-01), obtendrá el certificado y modificará tu bloque de servidor para añadir ssl_certificate/ssl_certificate_key y redirección a HTTPS si aceptas.
 **sudo certbot --nginx -d example.com -d <URL>**
 Otra alternativa es hacerlo no interactivo.
@@ -384,8 +384,69 @@ Otra alternativa es hacerlo no interactivo.
 **Renovación**
 Debería hacerla automáticamente.
 
-# Cifrado de endpoints
+## Cifrado de endpoints
 
-Cloud: GCP y Azure: panel/Encryption = “Enabled”.
-Windows: BitLocker, estado del disco,  “On”.
-Linux: VeraCrypt.
+**Cloud:** 
+- GCP: “Encryption, Google-managed key”.
+  
+**Windows:** BitLocker. Panel de control, Sistema y Seguridad, Bitlocker, Activar Bitlocker (elegir TPM)
+
+**Linux:** VeraCrypt. VeraCrypt, “Create Volume", Standard Volume (elegir AES)
+
+**Bases de Datos PostgreSQL**: pgcrypto
+- Crear Tabla:
+CREATE TABLE secure_data (
+    id SERIAL PRIMARY KEY,
+    data BYTEA
+);
+
+- Insertar datos cifrados:
+INSERT INTO secure_data (data)
+VALUES (pgp_sym_encrypt('dato secreto','mi_clave'));
+
+- Leer datos:
+SELECT pgp_sym_decrypt(data,'mi_clave') FROM secure_data;
+
+
+---
+
+## Manual de Autenticación
+
+
+### Autenticación multifactor (MFA)
+
+Añade un segundo factor de verificación además de la contraseña.
+
+### Opciones de MFA
+
+**TOTP o App de autenticación**
+- Google Authenticator, Authy, Microsoft Authenticator
+
+**SMS / Email OTP**
+- Servicio de envío de SMS (Twilio, Nexmo) o email (SMTP seguro).
+
+**Hardware / USB token**
+- YubiKey, Feitian, NitroKey
+
+**Biometría**
+- Reconocimiento facial, huella dactilar, iris, integrado con Windows Hello, TouchID, Android Biometric API
+
+**MFA cloud**
+GCP: IAM & Admin, Security, 2-Step Verification, Enforce.
+
+
+#### Gestión de contraseñas
+
+- Longitud mínima: 12 caracteres
+- Mezcla de mayúsculas, minúsculas, números y símbolos
+- No reutilizar contraseñas antiguas
+- Cambio cada 2-3 meses
+- Nunca almacenarlas en texto plano
+
+**Herramientas de gestión de contraseñas:**
+- **Cloud:** GCP Secret Manager
+- **Local / On-prem:** Hashicorp Vault, KeePass, Bitwarden, 1Password
+- **CI/CD:** en pipelines, no en repositorio
+
+---
+
