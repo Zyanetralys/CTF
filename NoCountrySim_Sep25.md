@@ -494,3 +494,49 @@ Okta es un Identity Provider (IdP) en la nube que centraliza usuarios, autentica
 - Integración con aplicaciones (SAML, OIDC, SCIM para sincronización de usuarios).
 - Da SDKs y APIs para verificar tokens o recibir notificaciones push.
 - Permite monitorización y auditoría, ver logs de accesos, alertas automáticas para eventos, etc.
+
+---
+
+## Gestión de vulnerabilidades y parches
+
+### Principios
+- Mantener sistemas operativos, aplicaciones y dependencias siempre actualizadas.
+- Revisar y aplicar parches de seguridad en cuanto se publiquen.
+- Usar fuentes oficiales de proveedores y repositorios seguros.
+- Programar ciclos de parcheo regulares (ej: mensual) y revisiones de seguridad.
+
+---
+
+### Monitoreo de vulnerabilidades (CVE)
+- Consultar **bases de datos oficiales**:
+  - NVD (National Vulnerability Database)
+  - CVE Details
+  - Security advisories de proveedores (Microsoft, Red Hat, Debian, etc.)
+- Implementar **alertas automáticas** para CVEs críticos relacionados con el stack en uso.
+
+---
+
+### Herramientas de escaneo
+- **OWASP ZAP** → Detección de vulnerabilidades en aplicaciones web.
+- **Nikto** → Escáner de servidores web para configuraciones inseguras.
+- **Snyk** → Análisis de dependencias, librerías y contenedores.
+- **OpenVAS / Greenbone** → Escaneo de red y servicios.
+- **Clair o Trivy** → Escaneo de imágenes de contenedores.
+
+Ejemplo con Trivy en Docker:
+```bash
+docker run --rm aquasec/trivy image nginx:latest
+
+Gestión de parches
+
+Inventario: identificar sistemas, versiones y software en uso.
+
+Evaluación: priorizar parches según criticidad (CVSS, exposición a internet).
+
+Aplicación: desplegar parches en entornos de prueba antes de producción.
+
+Automatización: usar herramientas como Ansible, Puppet o WSUS para aplicar parches.
+
+Verificación: confirmar que el parche se aplicó y no rompió dependencias.
+
+Registro: documentar cambios para auditoría.
