@@ -524,7 +524,7 @@ Okta es un Identity Provider (IdP) en la nube que centraliza usuarios, autentica
 - **Clair o Trivy** → Escaneo de imágenes de contenedores.
 
 Ejemplo con Trivy en Docker:
-```bash
+
 docker run --rm aquasec/trivy image nginx:latest
 
 Gestión de parches
@@ -540,3 +540,107 @@ Automatización: usar herramientas como Ansible, Puppet o WSUS para aplicar parc
 Verificación: confirmar que el parche se aplicó y no rompió dependencias.
 
 Registro: documentar cambios para auditoría.
+
+---
+
+Gestión de vulnerabilidades y parches
+
+Mantener sistemas operativos, aplicaciones y dependencias actualizadas.
+
+Monitoreo de CVEs (Common Vulnerabilities and Exposures) relevantes.
+
+Uso de herramientas de escaneo básico: OWASP ZAP, Nikto, Snyk.
+
+Programar ciclos de parcheo regulares y revisiones de seguridad.
+
+Seguridad de APIs
+
+Validación de inputs y outputs.
+
+Autenticación y autorización por endpoint.
+
+Limitar métodos HTTP permitidos.
+
+Rate limiting / throttling.
+
+Registro de accesos y auditoría de uso.
+
+## Seguridad de la infraestructura cloud
+
+Revisión de permisos IAM / roles mínimo privilegio.
+
+Habilitar cifrado en reposo y en tránsito.
+
+Backups cifrados y periódicos.
+
+Monitoreo de actividad sospechosa.
+
+## Gestión de incidentes y flujos de remediación
+
+Procedimientos claros para incidentes menores y críticos.
+
+Notificación y escalado.
+
+Registro y análisis post-mortem.
+
+Ejemplos de flujos para phishing, malware o brechas de datos.
+
+## Concienciación y formación del equipo
+
+Capacitación periódica sobre phishing y ingeniería social.
+
+Entrenamiento para reconocer ataques comunes.
+
+Revisión de políticas de seguridad.
+
+## Logging y monitorización
+
+Activar logs de acceso y auditoría para todos los sistemas críticos.
+
+Alertas automáticas ante intentos fallidos o accesos sospechosos.
+
+Centralización de logs si es posible (ELK, Wazuh, Cloud Monitor).
+
+## Gestión de datos sensibles
+
+Clasificación de datos según sensibilidad.
+
+Enmascaramiento o tokenización de datos críticos.
+
+Eliminación segura de datos obsoletos.
+
+##  Evaluación periódica
+
+Auditorías internas o externas.
+
+Escaneos de vulnerabilidades.
+
+Revisión de políticas y cumplimiento regulatorio (GDPR, PCI DSS).
+
+---
+
+## Gestión de vulnerabilidades y parches
+
+### Principios
+- Mantener sistemas operativos, aplicaciones y dependencias siempre actualizadas.
+- Revisar y aplicar parches de seguridad en cuanto se publiquen.
+- Usar fuentes oficiales de proveedores y repositorios seguros.
+- Programar ciclos de parcheo regulares (ej: mensual) y revisiones de seguridad.
+
+---
+
+### Monitoreo de vulnerabilidades (CVE)
+- Consultar **bases de datos oficiales**:
+  - NVD (National Vulnerability Database)
+  - CVE Details
+  - Security advisories de proveedores (Microsoft, Red Hat, Debian, etc.)
+- Implementar **alertas automáticas** para CVEs críticos relacionados con el stack en uso.
+
+---
+
+### Herramientas de escaneo
+- **OWASP ZAP** → Detección de vulnerabilidades en aplicaciones web.
+- **Nikto** → Escáner de servidores web para configuraciones inseguras.
+- **Snyk** → Análisis de dependencias, librerías y contenedores.
+- **OpenVAS / Greenbone** → Escaneo de red y servicios.
+- **Clair o Trivy** → Escaneo de imágenes de contenedores.
