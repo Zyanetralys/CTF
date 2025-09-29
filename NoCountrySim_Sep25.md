@@ -450,3 +450,47 @@ GCP: IAM & Admin, Security, 2-Step Verification, Enforce.
 
 ---
 
+## Control de accesos
+
+### Firewall
+Habilitar logging de firewall (UFW)
+
+activar UFW
+```bash
+sudo ufw enable
+sudo ufw logging on
+```
+ver logs
+```bash
+sudo tail -f /var/log/ufw.log
+```
+
+### Forwarding de logs
+```bash
+Con Kibana o Wazuh (TCP, puerto 514)
+sudo systemctl restart rsyslog
+```
+verificar envío:
+```bash
+sudo logger "test log forwarding"
+```
+en servidor central ver que llega
+
+### Auditd 
+Audita cambios
+```bash
+sudo apt install -y auditd audispd-plugins
+```
+
+## Okta
+Gestión de identidad y MFA
+Okta es un Identity Provider (IdP) en la nube que centraliza usuarios, autenticación, MFA y SSO (Single Sign-On) para aplicaciones internas y externas.  
+
+**¿Qué tiene Okta?**
+- MFA integrado (TOTP, SMS, push notification, hardware token, biometría)
+- Gestión centralizada de los usuarios y de permisos
+- Compatible con LDAP/AD y SaaS
+- Single Sign-On para apps web, móviles y APIs
+- Integración con aplicaciones (SAML, OIDC, SCIM para sincronización de usuarios).
+- Da SDKs y APIs para verificar tokens o recibir notificaciones push.
+- Permite monitorización y auditoría, ver logs de accesos, alertas automáticas para eventos, etc.
