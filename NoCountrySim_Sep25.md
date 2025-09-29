@@ -4,7 +4,6 @@
 **Programa:** Simulación Laboral No Country  
 **Período:** 29 septiembre - 3 noviembre 2025  
 **Rol:** Ethical Hacker  
-**Estado:** Participante activo  
 
 ## Programa
 Simulación laboral intensiva de 5 semanas diseñada para replicar entornos de trabajo reales en equipos multidisciplinarios. El programa abarca múltiples especialidades tecnológicas incluyendo desarrollo web, mobile, ciberseguridad, AI, UX/UI design, data science y marketing digital.
