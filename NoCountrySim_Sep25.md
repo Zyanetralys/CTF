@@ -66,6 +66,312 @@ Simulación laboral intensiva de 5 semanas diseñada para replicar entornos de t
 ---
 
 
+🔐 Autenticación & Autorización
+Recomendaciones clave
+
+MFA obligatorio → Admins, accesos a producción, operaciones sensibles.
+
+Opciones: TOTP (Google Authenticator), Okta (IdP empresarial), YubiKey para admins.
+
+OAuth2 / OIDC → Scopes mínimos: openid profile email read:transactions write:transactions.
+
+JWT → access_token 15m, refresh_token 7d, rotación y revocación.
+
+Reautenticación → operaciones > €1,000 o cambios de KYC.
+
+Ejemplo: integración básica Okta (Node.js)
+// okta client
+const okta = require('@okta/okta-sdk-nodejs');
+const client = new okta.Client({
+  orgUrl: process.env.OKTA_ORG_URL,
+  token: process.env.OKTA_API_TOKEN
+});
+
+// verify MFA (ejemplo conceptual)
+async function verifyMFA(userId, factorId, passCode) {
+  const user = await client.getUser(userId);
+  const factor = await user.getFactor(factorId);
+  const verification = await factor.verify({ passCode });
+  return verification.status === 'SUCCESS';
+}
+
+YubiKey (Linux PAM)
+sudo apt install -y libpam-yubico
+# Añadir al /etc/pam.d/common-auth
+# auth required pam_yubico.so id=YOUR_CLIENT_ID key=YOUR_SECRET_KEY
+
+🔑 Gestión de Credenciales & Secrets
+Principios
+
+Principio de menor privilegio.
+
+No hardcodear secrets.
+
+Gestor de secrets obligatorio: HashiCorp Vault / GCP Secret Manager / AWS Secrets Manager.
+
+Rotación automática: claves rotadas cada 90 días.
+
+Alerta y revocación inmediata ante compromiso.
+
+Ejemplo: Vault — política mínima (HCL)
+path "secret/data/fintech/*" {
+  capabilities = ["read", "list"]
+}
+path "secret/data/prod/*" {
+  capabilities = ["read"]
+  allowed_parameters = {}
+}
+
+👥 Control de Accesos — RBAC (matriz rápida)
+Rol	Permisos principales	MFA	Despliegue Prod
+Admin	CRUD infraestructura, IAM, pagos	Sí	Manual/2 personas
+DevOps	Deploy, infra, logs	Sí	Sí (CI gated)
+Developer	Código, staging	No	No
+Support	Logs anonimizados, solo lectura	No	No
+Auditor	Read-only logs/config	Sí	No
+
+Revisar permisos: cada 3 meses.
+
+Segregación de funciones: dev ≠ deploy.
+
+📊 Retención de Datos & Compliance
+
+PII: retención mínima necesaria por ley; anonimizar cuando sea posible.
+
+Datos de tarjeta: nunca almacenar CVV; usar tokenización (Stripe/PCI provider).
+
+Logs de seguridad: conservar ≥ 1 año.
+
+Logs de transacciones: según normativa financiera (ej. 5-7 años).
+
+Backups: cifrados, retención 30 días (ej. GCS/AWS S3 con SSE + KMS).
+
+Eliminación: borrado con registro de auditoría + destrucción criptográfica.
+
+🖥️ Hardening & Infraestructura
+Linux (CIS / comandos)
+sudo apt update && sudo apt upgrade -y
+# UFW
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+sudo ufw allow 443/tcp
+sudo ufw enable
+# SSH
+sudo sed -i 's/#Port 22/Port 2222/' /etc/ssh/sshd_config
+sudo sed -i 's/PermitRootLogin yes/PermitRootLogin no/' /etc/ssh/sshd_config
+sudo systemctl restart sshd
+# Fail2Ban
+sudo apt install -y fail2ban
+
+Docker
+
+No ejecutar contenedores como root → USER 1001 en Dockerfile.
+
+Escanear imágenes: Trivy / Clair.
+
+daemon.json ejemplo:
+
+{
+  "live-restore": true,
+  "userland-proxy": false,
+  "icc": false,
+  "log-driver": "json-file",
+  "log-opts": { "max-size": "10m", "max-file": "3" }
+}
+
+Red / Cloud
+
+VPC segmentada: public LB, private API, data subnet sin acceso público.
+
+IAM: roles por servicio, no users. Revisión trimestral.
+
+🔒 Cifrado & Protección de Datos
+En tránsito
+
+TLS 1.2/1.3, HSTS, CSP, security headers en Nginx.
+
+Ejemplo Nginx (extracto):
+
+ssl_protocols TLSv1.2 TLSv1.3;
+add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+add_header X-Frame-Options "DENY" always;
+add_header Content-Security-Policy "default-src 'self'" always;
+
+En reposo
+
+PostgreSQL: pgcrypto / TDE (cloud KMS).
+
+Cloud KMS sample (gcloud):
+
+gcloud kms keyrings create fintech-keyring --location=europe-west1
+gcloud kms keys create data-encryption-key --location=europe-west1 --keyring=fintech-keyring --purpose=encryption
+
+Tokenización pagos (Stripe)
+
+Token en frontend (Stripe.js), backend procesa token y guarda solo last4 + brand.
+
+🛡️ SDLC Seguro — Herramientas & Pipelines
+SAST (Semgrep)
+
+Config: p/owasp-top-ten, reglas custom hardcoded-secret, sql-injection.
+
+Comando: semgrep --config=auto src/
+
+DAST
+
+OWASP ZAP baseline en staging, Burp para revisión manual.
+
+ZAP Docker baseline:
+
+docker run -u zap -p 8080:8080 \
+  -v $(pwd):/zap/wrk:rw \
+  owasp/zap2docker-stable \
+  zap-baseline.py -t https://staging.example.com -r zap-report.html
+
+SCA
+
+npm audit, snyk test, Dependabot weekly.
+
+Integrar en CI (GitHub Actions/GitLab CI).
+
+Pipelines (snippet security job)
+# .github/workflows/security.yml - excerpt
+jobs:
+  secret-scanning:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Gitleaks Scan
+        uses: gitleaks/gitleaks-action@v2
+
+🔎 Secret Scanning & Repo Hygiene
+
+Tools: Gitleaks, TruffleHog, git-secrets (pre-commit hooks).
+
+CI: bloquear PRs con secrets detectados.
+
+.gitleaks.toml reglas: AWS, Stripe, jwt secret patterns.
+
+🧰 Pentesting / Ethical Hacker — Checklist por sprint
+Sprint 0 (Planificación)
+
+Definir scopes, assets, reglas de engagement.
+
+Entregables: scope.txt, rules_of_engagement.md.
+
+Semana 1
+
+Recon pasivo (OSINT, subdomains, cert transparency).
+
+Crear lista targets y honeytokens.
+
+Semana 2
+
+Scanning (nuclei, trivy, semgrep).
+
+DAST básico (ZAP baseline).
+
+Semana 3
+
+Explotación controlada en staging.
+
+Privilege escalation checks, IAM policies review.
+
+Semana 4 (final)
+
+Reporte: executive summary + technical annex.
+
+Remediation plan + retest checklist.
+
+🐝 Honeytokens & Detectores (prácticos)
+
+Credenciales falsas en repos, DB seeding (fake_user_zz), monitor alert on use.
+
+Files: secrets-not-for-production.txt (URL unico, webhook).
+
+Honeytoken delivery: alert Slack + create ticket automáticamente.
+
+🚨 Monitoreo & Alertas — Umbrales sugeridos
+ELK + Filebeat
+
+Alerts: failed login rate rate(failed_login_attempts_total[5m]) > 10 → warn.
+
+SQL injection detected → critical immediate.
+
+Prometheus Alerts (ejemplo resumido)
+- alert: HighFailedLoginRate
+  expr: rate(failed_login_attempts_total[5m]) > 10
+  for: 2m
+  labels: { severity: warning }
+
+
+DDoS early: rate(http_requests_total[5m]) > 1000 → investigate.
+
+⚠️ Threat Model (STRIDE) — Mitigaciones directas
+
+Spoofing → MFA + cert pinning en mobile.
+
+Tampering → TLS mutual en segmentos interns, signatures.
+
+Repudiation → audit logs WORM, centralizado.
+
+Information Disclosure → no PII en logs, data redaction.
+
+DoS → rate limits, autoscaling + WAF.
+
+Elevation → IAM least privilege, periodic IAM review.
+
+🧾 Incident Response — Playbook (resumen)
+
+Detección → alert SRE/SEC + ticket automatic.
+
+Triage → clasificar (confidencialidad/integridad/disponibilidad).
+
+Containment → rotar claves, bloquear IPs, aislar pods.
+
+Eradication → eliminar backdoor/honeytoken, parche.
+
+Recovery → restore from backup cifrado, validación integridad.
+
+Post-mortem → informe, lessons learned, aplicar mitigations.
+
+📁 Entregables para Demo Day (qué llevar)
+
+Executive summary (1 página).
+
+Matriz de controles (Control | Herramienta | Estado).
+
+Listado de vulnerabilidades críticas + PRs creados.
+
+Video demo: despliegue seguro + prueba de exploit mitigada.
+
+Checklist de despliegue seguro para producción.
+
+✅ Lista rápida (Checklist ejecutable)
+
+ MFA en cuentas admin (Okta/TOTP/YubiKey)
+
+ Secrets en Vault / no hardcoded
+
+ SAST + DAST + SCA integrados en CI
+
+ WAF + Rate limiting + CDN rules
+
+ Backups cifrados + KMS
+
+ Logs → ELK + alertas configuradas
+
+ RBAC revisado (últimos 3 meses)
+
+ Playbook IR validado y comunicado
+
+ ---
+
+
+
+
+
+
 # Kit de Seguridad para Super App Financiera
 
 ## Inventario de Activos y Arquitectura
