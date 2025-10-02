@@ -66,580 +66,1587 @@ Simulación laboral intensiva de 5 semanas diseñada para replicar entornos de t
 ---
 
 
-# Proyecto No Country Septiembre 2025: Kit de Seguridad para Super App Financiera
-
-
-## Descripción
-Kit de Seguridad para Super App Financiera
-Vertical: Cybersecurity
-
-Sector de Negocio: Fintech
-
-Necesidad del cliente
-Las super apps manejan grandes volúmenes de datos sensibles y deben asegurar la confidencialidad e integridad de la información.
-
-Sin embargo, muchas startups carecen de guías y herramientas para implementar buenas prácticas de seguridad desde el inicio.
-
-Validación de mercado
-La transformación digital ha convertido las fintech en un objetivo atractivo para los atacantes:
-
-Amenazas como *phishing*, *ransomware* y brechas de datos pueden costar millones y dañar la confianza de los usuarios.
-- Debido a la interconectividad de APIs y servicios, la seguridad se convierte en un factor crítico para la supervivencia del negocio.
-
-Expectativa
-Diseñar un kit de seguridad integral para super apps financieras que incluya:
-
-Plantillas de políticas.
-Lista de chequeo de configuración segura.
-Guías de buenas prácticas.
-El kit debe permitir que equipos sin infraestructura de seguridad compleja:
-
-Implementen controles básicos.
-Realicen autoevaluaciones.
-Entregables deseados
-Manual de mejores prácticas (cifrado, autenticación, control de acceso).
-Checklist de configuración segura para infraestructura y APIs.
-Scripts de pruebas básicas de vulnerabilidades (OWASP ZAP, SAST).
-Guía de concientización para el equipo (phishing, ingeniería social).
-Funcionalidades
-Must-have
-Guía paso a paso para configurar autenticación multifactor y cifrado de datos.
-Plantillas de políticas de contraseñas y gestión de credenciales.
-Herramientas de escaneo automático de vulnerabilidades de bajo costo.
-Nice-to-have
-Ejemplos de flujos de remediación de incidentes menores.
-Integración con pipelines de CI/CD para análisis de seguridad.
-Glosario de términos de cumplimiento (GDPR, PCI DSS).
-
-## Resumen
-
-Problema: Las super apps manejan datos financieros sensibles, pero muchas startups carecen de guías y herramientas para aplicar seguridad desde el inicio.
-
-**Contexto**
-
-- Las fintech son un blanco prioritario de ataques (phishing, ransomware, fugas de datos).
-- La interconexión de APIs aumenta la superficie de ataque.
-- La seguridad es crítica para la confianza y la supervivencia del negocio.
-
-**Objetivo: Diseñar un kit**
-
-- Implementar controles básicos.
-- Hacer autoevaluaciones de seguridad.
-- Entregables
-- Manual de mejores prácticas (cifrado, autenticación, control de acceso).
-- Checklist de configuración segura (infraestructura, APIs).
-- Scripts para pruebas de vulnerabilidades (OWASP ZAP, SAST).
-- Guía de concientización (phishing, ingeniería social).
-
-****Funcionalidades:**
-
-- Must-have: MFA, cifrado, plantillas de contraseñas y credenciales, escaneo automático económico.
-- Nice-to-have: ejemplos de respuesta a incidentes menores, integración con CI/CD, glosario de cumplimiento (GDPR, PCI DSS).
-
-  ## Plan
-
-1. Resumen
-
-Proveer un kit reproducible (políticas, checklists, scripts y guías) que permita a una super app fintech implementar controles básicos de seguridad, realizar autoevaluaciones y escanear vulnerabilidades con coste bajo.
-
-2. Alcance y supuestos
-
-- Aplicable a una super app (web + API + mobile backend).
-- Prioridad en confidencialidad e integridad de datos financieros. No cubre infra on-premises industriales complejas.
-- Stack típico: contenedores (Docker), repos GitHub/GitLab, CI (GitHub Actions/GitLab CI/Jenkins).
-
-3. Entregables finales (lo que te pedirán entregar)
-- Manual de mejores prácticas (cifrado, autenticación, control de acceso).
-- Checklist de configuración segura (infra y APIs) en formato checklist.md / Excel.
-- Scripts de pruebas automáticas: ZAP (baseline), Trivy (containers/IaC), Semgrep (SAST), y ejemplos SCA/SAST simples.
-- Plantillas de políticas (contraseñas, gestión de credenciales, acceso remoto, manejo de incidentes).
-- Guía de concienciación para equipo (phishing + checklist de simulación).
-- Reporte ejecutivo y ficha con hallazgos y remediaciones (priorizadas).
-
-4. Cronograma (sprint por sprint)
-- (Kickoff & Discovery): inventario activos, flujo de datos, mapa de dependencias. Entrega: Diagrama de flujo + inventario. (1 semana)
-- (Políticas & Gobierno): plantillas y clasificación de datos. Entrega: paquete políticas.
-- (Hardening Infra): aplicar CIS / baselines mínimos en infra de staging. Entrega: checklist aplicado + evidencia.
-- (Auth & Data Protection): MFA, cifrado en tránsito y reposo, KMS. Entrega: configuración y pruebas básicas.
-- (SDLC: SAST/SCA/CI): integrar Semgrep + SCA + secret scanning en PRs. Entrega: pipelines con scans.
-- (DAST & Infra scanning): ZAP scans automatizados + Trivy para imágenes + IaC scanning. Entrega: scripts y reportes.
-- (Detección & IR): logging, alerting, playbook de IR y simulacro. Entrega: playbook y simulacro ejecutado.
-- (Delivery & Handover): empaquetar kit, documentación, formación y checklist final.
-
-5. Fases y pasos detallados (Pauta paso a paso)
-
-**Fase 0 — Kickoff**
-Objetivo: conocer la app, sus datos críticos, y su superficie de ataque.
-
-Tareas:
-- Reunir stakeholders (PO, dev lead, infra, legal/compliance si existe).
-- Inventario mínimo: endpoints públicos, APIs internas, flujos de pago, 3rd-party providers (pagos, KYC), repositorios, buckets/DBs que contienen PII o datos de pago.
-- Clasificación rápida de datos: PII, financieros, sensibles, públicos.
-- Diagrama de arquitectura (simple): frontend, backend, DB, colas, 3rd parties.
-- Threat model rápido (STRIDE-lite): priorizar 5 ataques más probables.
-- Output: inventario_activos.md, diagrama_architectura.png, threat_model.md.
-
-**Fase 1 — Políticas & Gobierno**
-Objetivo: dejar por escrito normas operativas básicas.
-
-Tareas:
-- Plantilla: Política de contraseñas y gestión de credenciales.
-- Plantilla: Política de control de acceso (principio de menor privilegio).
-- Política: Gestión de secrets (uso de vault / KMS; prohibir secrets en repos).
-- Data retention y responsabilidades frente a GDPR/PCI.
-- Salida mínima: politicas/ con archivos markdown listos para adaptar.
-- Plantilla rápida — Política de contraseña (extracto):
-- Longitud mínima: 12 caracteres recomendados (usar passphrases). No obligar símbolos complejos. Evitar rotaciones obligatorias sin motivo.
-- Rechazar contraseñas comprometidas (check con listas públicas).
-- MFA obligatorio para cuentas de administración y acceso a prod.
-
-**Fase 2 — Hardening de Infra y Baselines**
-Objetivo: aplicar configuraciones seguras reproducibles.
-
-Tareas:
-- Aplicar CIS Benchmarks relevantes (Linux, Docker, Kubernetes si aplica). Usa checklists automatizables.
-- Configurar reglas de firewall, segmentación de red entre servicios y base de datos.
-- Reducir exposición: eliminar puertos innecesarios, healthy checks restringidos.
-- Habilitar rotación de claves y KMS para cifrado de datos en reposo.
-- Herramientas & comandos:
-- Usa herramientas de auditoría (CIS-CAT o scanners open-source) para evidencias.
-
-**Fase 3 — Autenticación y Autorización (MFA y NIST)**
-Objetivo: garantizar identidades robustas.
-
-Tareas:
-- Implementar MFA para accesos de usuarios administrativos y empleados críticos.
-- Revisar sesiones, tiempos de expiración y re-autenticación (seguir NIST SP 800-63 recomendaciones para AAL levels).
-- Revisar y aplicar OAuth2 / OIDC scopes correctamente.
-
-Checklist:
-- MFA en consola cloud, paneles, dashboards, herramientas de administración.
-- Tokens cortos y refresh tokens con revocación.
-- Registro y monitorización de intentos de login.
-
-**Fase 4 — Protección de Datos (en tránsito y en reposo)**
-Objetivo: cifrar datos sensibles y proteger claves.
-
-Tareas:
-- TLS obligatorio en todas las conexiones (HSTS, certificados válidos).
-- Cifrado en reposo: base de datos y buckets con KMS.
-- Minimizar datos almacenados: tokenizar/mascarar datos de pago cuando sea posible.
-
-**Fase 5 — SDLC Seguro: SAST, SCA, Secret Scanning
-**Objetivo: detectar vulnerabilidades en código y dependencias antes del deploy.
-
-Tareas:
-Integrar Semgrep (SAST leve) en PRs.
-Ejecutar SCA (dependency scanning) en cada build: npm audit / pip-audit / trivy repo scan.
-Habilitar secret scanning (GitHub secret scanning o trufflehog) en repos.
-
-Ejemplos rápidos (comandos):
-
-Bandit (Python):
-pip install bandit
-bandit -r src/ -f json -o bandit-report.json
-
-Semgrep en local:
-pip install semgrep
-semgrep --config=auto
-
-**Fase 6 — DAST & Scanning Automático (ZAP, Trivy)**
-
-Objetivo: automatizar pruebas dinámicas y scans de imágenes/IaC.
-
-Tareas:
-- Instalar y automatizar OWASP ZAP para env. staging. Ejecutar escaneo baseline en cada release.
-- Integrar Trivy para escaneo de imágenes y repos (IaC misconfigurations).
-- Comando ZAP (ejemplo con Docker):
-
-# escaneo baseline simple
-docker run --rm -v $(pwd):/zap/wrk/:rw owasp/zap2docker-stable zap-baseline.py -t https://staging.example.com -r zap-report.html
-
-Comando Trivy (imagen):
-
-trivy image --format json -o trivy-report.json myorg/myapp:latest
-
-**Fase 7 — Integración en CI/CD (pruebas en PRs y gates)**
-
-Objetivo: automatizar gates que bloqueen PRs peligrosos.
-
-Pautas:
-- Pipelines mínimos: lint -> tests -> SAST/SCA -> DAST (opcional en PRs) -> deploy.
-- Fallo en SAST/SCA debe bloquear merge automático hasta revisión.
-- Snippets (GitHub Actions): Semgrep + Trivy
-
-name: Security checks
-on: [pull_request]
-jobs:
-  semgrep:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Run Semgrep
-        uses: returntocorp/semgrep-action@v1
-  trivy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Run Trivy
-        uses: aquasecurity/trivy-action@v0.2.0
-        with:
-          image-ref: ${{ env.IMAGE_REF }}
-
-**Fase 8 — Detección, Logging y Monitorización**
-Objetivo: saber cuándo algo va mal.
-
-Tareas:
-Centralizar logs (ELK/EFK or a managed SIEM). Guardar logs de autenticación y transacciones críticas.
-Definir alertas: múltiples fallos de login, picos en errores 5xx, aumento de latencia inusual.
-Retención de logs acorde a cumplimiento (GDPR mínimo, y requisitos regulatorios si aplica).
-
-**Fase 9 — Plan de Respuesta a Incidentes (IR) y Simulacros**
-Objetivo: preparar playbooks y practicar.
-
-Playbook mínimo (incidente de fuga de datos):
-- Detección: activar canal IR (Slack/esc.alarm).
-- Contención: bloquear accesos, tomar snapshots, aislar servicios comprometidos.
-- Preservación: preservar evidencias (logs, memory dumps) en almacenamiento forense.
-- Erradicación: parche, rotación de claves, remover backdoors.
-- Recuperación: restaurar servicios controlados.
-- Post-mortem: informe y lecciones aprendidas.
-
-**Fase 10 — Formación y Concienciación**
-Objetivo: reducir riesgo humano (phishing, ingeniería social).
-
-Acciones:
-- Simulacro de phishing trimestral mínimo.
-- Checklist de seguridad para empleados (no compartir contraseñas, reportar emails sospechosos).
-
-**6. Checklists rápidos (extractos)**
-Checklist mínimo de despliegue seguro (pre-prod -> prod)
-
-**7. Scripts y plantillas (entregable técnico)**
-Incluye: zap-run.sh, trivy-scan.sh, semgrep-workflow.yml, password-policy.md, ir-playbook.md.
-
-Ejemplo simple: zap-run.sh
-
-#!/usr/bin/env bash
-TARGET=$1
-docker run --rm -v $(pwd):/zap/wrk/:rw owasp/zap2docker-stable zap-baseline.py -t "$TARGET" -r zap-report.html
-
-**8. Formato de entrega y presentación final**
-
-Carpeta deliverable/ con:
-
-docs/ (manuales y políticas)
-
-scripts/ (scanners y pipelines)
-
-checklists/ (xlsx / md)
-
-reports/ (ejemplos de reportes con vulnerabilidades priorizadas)
-
-Presentación ejecutiva (1 slide) + ficha operativa (1 página) con prioridades y los 3 riesgos críticos.
-
-**9. Priorización de remediación (Matriz sencilla)**
-
-Alta (P0): vulnerabilidades RCE / exposición de datos de pago / credenciales públicas.
-
-Media (P1): XSS, CSRF no explotadas en prod, dependencias con CVE moderadas.
-
-Baja (P2): issues de configuración no expuestos.
+# Kit de Seguridad para Super App Financiera
+
+## Inventario de Activos y Arquitectura
+
+### Componentes Críticos
+- **Frontend**: Aplicación web (React/Angular) y móvil (iOS/Android)
+- **Backend API**: Servicios REST/GraphQL para transacciones, autenticación, pagos
+- **Base de datos**: PostgreSQL con datos PII y transacciones financieras
+- **Servicios externos**: Pasarelas de pago, KYC/AML providers, servicios de notificación
+- **Infraestructura**: Contenedores Docker en cloud (GCP/AWS), balanceadores, CDN
+
+### Clasificación de Datos
+- **Críticos**: Datos de tarjetas, contraseñas, tokens de sesión, claves API
+- **Sensibles**: PII (nombres, DNI, dirección), historial de transacciones
+- **Internos**: Logs, métricas, configuraciones
+- **Públicos**: Documentación, términos de servicio
+
+### Diagrama de Flujo
+Usuario → CDN → Load Balancer → API Gateway → Microservicios
+↓
+Base de Datos (cifrada)
+↓
+Proveedores externos (TLS)
+
+### Threat Model (STRIDE)
+- **Spoofing**: Suplantación de identidad sin MFA
+- **Tampering**: Modificación de transacciones en tránsito sin TLS
+- **Repudiation**: Falta de logs de auditoría
+- **Information Disclosure**: Exposición de tokens o datos en logs
+- **Denial of Service**: Falta de rate limiting en APIs
+- **Elevation of Privilege**: Permisos excesivos en roles IAM
 
 ---
 
-# Manual de Cifrado
+## Políticas de Seguridad
 
-Cifrar infraestructura cloud, bases de datos, endpoints y móviles (cumplir GDPR y PCI DSS).
+### Política de Contraseñas
 
-## Cifrado en tránsito TLS (linux)
-- /etc/nginx: 
-- /etc/letsencrypt/live
+**Requisitos mínimos**:
+- Longitud mínima: 12 caracteres (recomendado 16+)
+- Uso de passphrases en lugar de combinaciones complejas arbitrarias
+- No forzar rotación periódica sin causa justificada
+- Validar contra listas de contraseñas comprometidas (Have I Been Pwned API)
+- Prohibir contraseñas comunes (password123, qwerty, etc.)
 
-### Certbot 
-Open-source que automatiza la obtención y renovación de certificados TLS de Let’s Encrypt,
-Let’s Encrypt es la Autoridad de Certificación gratuita que emite los certificados que dicen que el dominio es tu propiedad.
-Otra alternativa podría ser acme.sh
+**Almacenamiento**:
+- NUNCA almacenar en texto plano
+- Usar bcrypt, Argon2 o PBKDF2 con salt único
+- Aplicar hashing en backend antes de almacenar
 
-**Instalación**
-Actualizamos los repos (IMPORTANTE)
-**sudo apt update**
+**MFA obligatorio para**:
+- Cuentas administrativas
+- Acceso a producción
+- Transacciones superiores a umbral definido
 
-Instalamos el servicio que permite instalar paquetes snap que utiliza Certbot
-**sudo apt install -y snapd**
+### Política de Gestión de Credenciales
 
-Creamos el enlace para que certbot sea accesible como cualquier otro binario y pueda ejecutarse en /usr/bin
-sudo ln -s /snap/bin/certbot /usr/bin/certbot
+**Principios**:
+- Principio de menor privilegio
+- Rotación automática de claves cada 90 días
+- Prohibido hardcodear secrets en código fuente
+- Uso obligatorio de gestores de secrets (GCP Secret Manager, HashiCorp Vault)
 
-#### Obtener el certificado
---nginx le dice a Certbot que use el plugin nginx, hará la validación (HTTP-01), obtendrá el certificado y modificará tu bloque de servidor para añadir ssl_certificate/ssl_certificate_key y redirección a HTTPS si aceptas.
-**sudo certbot --nginx -d example.com -d <URL>**
-Otra alternativa es hacerlo no interactivo.
+**Gestión de API Keys**:
+- Generar keys con scope limitado
+- Revocar inmediatamente si hay compromiso
+- Monitorear uso anormal de APIs
 
-**Ficheros del certificado**
-**sudo certbot certificates**
-/etc/letsencrypt/live/
+**Acceso a producción**:
+- Requiere MFA + VPN
+- Logs de todas las sesiones
+- Revisión trimestral de permisos
 
-**Renovación**
-Debería hacerla automáticamente.
+### Política de Control de Acceso
 
-## Cifrado de endpoints
+**Roles definidos**:
+- **Admin**: acceso total (solo 2-3 personas)
+- **DevOps**: deploy, infraestructura, logs
+- **Developer**: desarrollo, staging
+- **Support**: solo lectura de logs y datos anonimizados
+- **Auditor**: acceso read-only a logs y configuraciones
 
-**Cloud:** 
-- GCP: “Encryption, Google-managed key”.
-  
-**Windows:** BitLocker. Panel de control, Sistema y Seguridad, Bitlocker, Activar Bitlocker (elegir TPM)
+**Reglas**:
+- Revisar permisos cada 3 meses
+- Revocar accesos al cambiar de rol o salir de la empresa
+- Segregación de funciones: quien desarrolla no despliega en prod
 
-**Linux:** VeraCrypt. VeraCrypt, “Create Volume", Standard Volume (elegir AES)
+### Política de Retención de Datos
 
-**Bases de Datos PostgreSQL**: pgcrypto
-- Crear Tabla:
-CREATE TABLE secure_data (
-    id SERIAL PRIMARY KEY,
-    data BYTEA
-);
+**Cumplimiento GDPR/PCI DSS**:
+- Datos de tarjetas: no almacenar CVV nunca; tokenizar con proveedor PCI
+- PII: retener solo mientras sea necesario, máximo según ley local
+- Logs de seguridad: mínimo 1 año
+- Logs de transacciones: según regulación financiera (5-7 años típicamente)
+- Backups cifrados: retención 30 días
 
-- Insertar datos cifrados:
-INSERT INTO secure_data (data)
-VALUES (pgp_sym_encrypt('dato secreto','mi_clave'));
-
-- Leer datos:
-SELECT pgp_sym_decrypt(data,'mi_clave') FROM secure_data;
-
-
----
-
-## Manual de Autenticación
-
-
-### Autenticación multifactor (MFA)
-
-Añade un segundo factor de verificación además de la contraseña.
-
-### Opciones de MFA
-
-**TOTP o App de autenticación**
-- Google Authenticator, Authy, Microsoft Authenticator
-
-**SMS / Email OTP**
-- Servicio de envío de SMS (Twilio, Nexmo) o email (SMTP seguro).
-
-**Hardware / USB token**
-- YubiKey, Feitian, NitroKey
-
-**Biometría**
-- Reconocimiento facial, huella dactilar, iris, integrado con Windows Hello, TouchID, Android Biometric API
-
-**MFA cloud**
-GCP: IAM & Admin, Security, 2-Step Verification, Enforce.
-
-
-#### Gestión de contraseñas
-
-- Longitud mínima: 12 caracteres
-- Mezcla de mayúsculas, minúsculas, números y símbolos
-- No reutilizar contraseñas antiguas
-- Cambio cada 2-3 meses
-- Nunca almacenarlas en texto plano
-
-**Herramientas de gestión de contraseñas:**
-- **Cloud:** GCP Secret Manager
-- **Local / On-prem:** Hashicorp Vault, KeePass, Bitwarden, 1Password
-- **CI/CD:** en pipelines, no en repositorio
+**Eliminación segura**:
+- Borrado criptográfico (destruir claves de cifrado)
+- Sobrescritura múltiple para soportes físicos
+- Documentar todas las eliminaciones para auditoría
 
 ---
 
-## Control de accesos
+## Hardening de Infraestructura
 
-### Firewall
-Habilitar logging de firewall (UFW)
+### CIS Benchmarks - Linux
 
-activar UFW
-```bash
+**Sistema operativo base**:
+
+# Actualizar sistema
+sudo apt update && sudo apt upgrade -y
+
+# Deshabilitar servicios innecesarios
+sudo systemctl disable cups bluetooth avahi-daemon
+
+# Configurar firewall UFW
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+sudo ufw allow 22/tcp  # SSH (temporal, cambiar puerto)
+sudo ufw allow 443/tcp # HTTPS
 sudo ufw enable
 sudo ufw logging on
-```
-ver logs
-```bash
-sudo tail -f /var/log/ufw.log
-```
 
-### Forwarding de logs
-```bash
-Con Kibana o Wazuh (TCP, puerto 514)
-sudo systemctl restart rsyslog
-```
-verificar envío:
-```bash
-sudo logger "test log forwarding"
-```
-en servidor central ver que llega
+# Configurar SSH seguro
+sudo nano /etc/ssh/sshd_config
+# Cambiar:
+# Port 2222
+# PermitRootLogin no
+# PasswordAuthentication no
+# PubkeyAuthentication yes
+sudo systemctl restart sshd
 
-### Auditd 
-Audita cambios
-```bash
+# Instalar fail2ban
+sudo apt install -y fail2ban
+sudo systemctl enable fail2ban
+
+## Auditd para monitoreo:
 sudo apt install -y auditd audispd-plugins
+sudo systemctl enable auditd
+
+# Configurar reglas básicas
+sudo nano /etc/audit/rules.d/audit.rules
+# Añadir:
+# -w /etc/passwd -p wa -k identity
+# -w /etc/shadow -p wa -k identity
+# -w /var/log/auth.log -p wa -k auth
+
+sudo systemctl restart auditd
+
+CIS Benchmarks - Docker
+Configuración segura de Docker:
+# No ejecutar contenedores como root
+docker run --user 1000:1000 myapp
+
+# Limitar recursos
+docker run --memory="512m" --cpus="1.0" myapp
+
+# Usar imágenes oficiales y escanearlas
+trivy image myapp:latest
+
+# Configurar Docker daemon
+sudo nano /etc/docker/daemon.json
+{
+  "live-restore": true,
+  "userland-proxy": false,
+  "icc": false,
+  "log-driver": "json-file",
+  "log-opts": {
+    "max-size": "10m",
+    "max-file": "3"
+  }
+}
+
+sudo systemctl restart docker
+
+Dockerfile seguro:
+FROM node:18-alpine AS base
+
+# Crear usuario no-root
+RUN addgroup -g 1001 appgroup && \
+    adduser -D -u 1001 -G appgroup appuser
+
+WORKDIR /app
+
+# Copiar dependencias
+COPY package*.json ./
+RUN npm ci --only=production
+
+# Copiar código
+COPY --chown=appuser:appgroup . .
+
+# Cambiar a usuario no-root
+USER appuser
+
+EXPOSE 3000
+CMD ["node", "server.js"]
+
+Segmentación de Red
+Configurar VPC y subnets:
+
+Subnet pública: Load balancer, bastion host
+Subnet privada: APIs, microservicios
+Subnet de datos: Bases de datos, sin acceso directo a internet
+
+Reglas de firewall:
+# Ejemplo GCP firewall rules
+- name: allow-lb-to-backend
+  source: load-balancer-subnet
+  destination: backend-subnet
+  ports: 8080
+
+- name: allow-backend-to-db
+  source: backend-subnet
+  destination: database-subnet
+  ports: 5432
+
+- name: deny-all-default
+  action: deny
+  priority: 65534
+
+  Autenticación y Autorización
+Implementación de MFA
+Opciones recomendadas:
+TOTP (Time-based One-Time Password):
+
+# Instalar Google Authenticator en servidor (PAM)
+sudo apt install -y libpam-google-authenticator
+
+# Configurar para usuario
+google-authenticator
+# Responder: yes, yes, yes, no, yes
+
+# Editar PAM
+sudo nano /etc/pam.d/sshd
+# Añadir: auth required pam_google_authenticator.so
+
+# Editar SSH
+sudo nano /etc/ssh/sshd_config
+# Cambiar: ChallengeResponseAuthentication yes
+sudo systemctl restart sshd
+
+Integración con Okta (ejemplo Node.js):
+const okta = require('@okta/okta-sdk-nodejs');
+
+const client = new okta.Client({
+  orgUrl: 'https://dev-123456.okta.com',
+  token: process.env.OKTA_API_TOKEN
+});
+
+// Verificar MFA
+async function verifyMFA(userId, factorId, passCode) {
+  const user = await client.getUser(userId);
+  const factor = await user.getFactor(factorId);
+  const verification = await factor.verify({ passCode });
+  return verification.status === 'SUCCESS';
+}
+
+YubiKey para administradores:
+# Instalar soporte YubiKey
+sudo apt install -y libpam-yubico
+
+# Configurar
+sudo nano /etc/pam.d/common-auth
+# Añadir: auth required pam_yubico.so id=YOUR_CLIENT_ID key=YOUR_SECRET_KEY
+
+OAuth2 / OpenID Connect
+Configuración de scopes:
+// Ejemplo con Passport.js
+const passport = require('passport');
+const OAuth2Strategy = require('passport-oauth2');
+
+passport.use(new OAuth2Strategy({
+    authorizationURL: 'https://auth.example.com/oauth/authorize',
+    tokenURL: 'https://auth.example.com/oauth/token',
+    clientID: process.env.OAUTH_CLIENT_ID,
+    clientSecret: process.env.OAUTH_CLIENT_SECRET,
+    callbackURL: 'https://app.example.com/callback',
+    scope: ['read:profile', 'write:transactions']
+  },
+  function(accessToken, refreshToken, profile, cb) {
+    // Validar y crear sesión
+    return cb(null, profile);
+  }
+));
+
+Gestión de Sesiones
+Tokens JWT seguros:
+const jwt = require('jsonwebtoken');
+
+// Generar token
+function generateToken(userId) {
+  return jwt.sign(
+    { userId, role: 'user' },
+    process.env.JWT_SECRET,
+    { 
+      expiresIn: '15m',  // Token corto
+      algorithm: 'HS256',
+      issuer: 'myapp.com'
+    }
+  );
+}
+
+// Refresh token (almacenar en DB)
+function generateRefreshToken(userId) {
+  return jwt.sign(
+    { userId, type: 'refresh' },
+    process.env.REFRESH_SECRET,
+    { expiresIn: '7d' }
+  );
+}
+
+// Middleware de verificación
+function verifyToken(req, res, next) {
+  const token = req.headers.authorization?.split(' ')[1];
+  if (!token) return res.status(401).json({ error: 'No token' });
+  
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = decoded;
+    next();
+  } catch (err) {
+    return res.status(401).json({ error: 'Invalid token' });
+  }
+}
+
+Configuración de sesiones:
+
+Access token: 15 minutos
+Refresh token: 7 días (revocar al logout)
+Re-autenticación para operaciones sensibles (transferencias > $1000)
+Invalidar todas las sesiones al cambiar contraseña
+
+
+Protección de Datos
+Cifrado en Tránsito (TLS)
+Configurar certificados con Certbot:
+# Instalar Certbot
+sudo apt update
+sudo apt install -y snapd
+sudo snap install --classic certbot
+sudo ln -s /snap/bin/certbot /usr/bin/certbot
+
+# Obtener certificado para Nginx
+sudo certbot --nginx -d api.example.com -d www.example.com
+
+# Verificar renovación automática
+sudo certbot renew --dry-run
+
+# Ver certificados instalados
+sudo certbot certificates
+
+Configuración Nginx con TLS robusto:
+server {
+    listen 443 ssl http2;
+    server_name api.example.com;
+
+    # Certificados
+    ssl_certificate /etc/letsencrypt/live/api.example.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/api.example.com/privkey.pem;
+
+    # Protocolos y ciphers seguros
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_ciphers 'ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256';
+    ssl_prefer_server_ciphers off;
+
+    # HSTS
+    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+
+    # Security headers
+    add_header X-Frame-Options "DENY" always;
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header X-XSS-Protection "1; mode=block" always;
+    add_header Content-Security-Policy "default-src 'self'" always;
+
+    location / {
+        proxy_pass http://backend:8080;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+# Redirigir HTTP a HTTPS
+server {
+    listen 80;
+    server_name api.example.com;
+    return 301 https://$server_name$request_uri;
+}
+
+Cifrado en Reposo
+PostgreSQL con pgcrypto:
+-- Activar extensión
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
+
+-- Crear tabla con columnas cifradas
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    phone_encrypted BYTEA,
+    ssn_encrypted BYTEA,
+    created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- Insertar datos cifrados (usar variable de entorno para key)
+INSERT INTO users (email, phone_encrypted, ssn_encrypted) 
+VALUES (
+    'user@example.com',
+    pgp_sym_encrypt('+34612345678', 'strong-encryption-key-here'),
+    pgp_sym_encrypt('123-45-6789', 'strong-encryption-key-here')
+);
+
+-- Leer datos descifrados (solo en aplicación, no en logs)
+SELECT 
+    id,
+    email,
+    pgp_sym_decrypt(phone_encrypted, 'strong-encryption-key-here') AS phone,
+    pgp_sym_decrypt(ssn_encrypted, 'strong-encryption-key-here') AS ssn
+FROM users
+WHERE email = 'user@example.com';
+
+GCP Cloud KMS:
+# Crear keyring
+gcloud kms keyrings create fintech-keyring \
+    --location=europe-west1
+
+# Crear clave de cifrado
+gcloud kms keys create data-encryption-key \
+    --location=europe-west1 \
+    --keyring=fintech-keyring \
+    --purpose=encryption
+
+# Cifrar archivo
+gcloud kms encrypt \
+    --location=europe-west1 \
+    --keyring=fintech-keyring \
+    --key=data-encryption-key \
+    --plaintext-file=secrets.txt \
+    --ciphertext-file=secrets.txt.enc
+
+# Descifrar
+gcloud kms decrypt \
+    --location=europe-west1 \
+    --keyring=fintech-keyring \
+    --key=data-encryption-key \
+    --ciphertext-file=secrets.txt.enc \
+    --plaintext-file=secrets-decrypted.txt
+
+Cifrado de disco (Linux - LUKS):
+# Cifrar partición (CUIDADO: borra datos)
+sudo cryptsetup luksFormat /dev/sdb1
+
+# Abrir partición cifrada
+sudo cryptsetup luksOpen /dev/sdb1 encrypted_data
+
+# Formatear y montar
+sudo mkfs.ext4 /dev/mapper/encrypted_data
+sudo mount /dev/mapper/encrypted_data /mnt/secure
+
+# Cerrar al terminar
+sudo umount /mnt/secure
+sudo cryptsetup luksClose encrypted_data
+
+Cifrado de disco (Windows - BitLocker):
+# Habilitar BitLocker en C:
+Enable-BitLocker -MountPoint "C:" -EncryptionMethod XtsAes256 -UsedSpaceOnly -TpmProtector
+
+# Hacer backup de recovery key
+Backup-BitLockerKeyProtector -MountPoint "C:" -KeyProtectorId (Get-BitLockerVolume -MountPoint "C:").KeyProtector[0].KeyProtectorId
+
+Tokenización de Datos de Pago
+Usar Stripe para PCI compliance:
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+
+// Frontend: crear token de tarjeta (nunca enviar datos completos)
+// Stripe.js se encarga de esto en el navegador
+
+// Backend: procesar pago con token
+async function processPayment(amount, tokenId) {
+  const charge = await stripe.charges.create({
+    amount: amount * 100, // centavos
+    currency: 'eur',
+    source: tokenId,  // Token, no datos de tarjeta
+    description: 'Purchase from app'
+  });
+  
+  // Guardar solo último 4 dígitos y brand
+  return {
+    transactionId: charge.id,
+    last4: charge.source.last4,
+    brand: charge.source.brand
+  };
+}
+
+# Kit de Seguridad - Continuación SDLC Seguro
+
+## SAST - Análisis Estático (Continuación)
+
+### Semgrep - Configuración avanzada
+
+```bash
+# Instalar
+pip install semgrep
+
+# Ejecutar localmente
+semgrep --config=auto src/
+
+# Con reglas específicas
+semgrep --config=p/owasp-top-ten --config=p/jwt src/
+
+# Generar reporte JSON
+semgrep --config=auto --json -o semgrep-report.json src/
 ```
 
-## Okta
-Gestión de identidad y MFA
-Okta es un Identity Provider (IdP) en la nube que centraliza usuarios, autenticación, MFA y SSO (Single Sign-On) para aplicaciones internas y externas.  
+**Archivo .semgrep.yml - Reglas personalizadas:**
 
-**¿Qué tiene Okta?**
-- MFA integrado (TOTP, SMS, push notification, hardware token, biometría)
-- Gestión centralizada de los usuarios y de permisos
-- Compatible con LDAP/AD y SaaS
-- Single Sign-On para apps web, móviles y APIs
-- Integración con aplicaciones (SAML, OIDC, SCIM para sincronización de usuarios).
-- Da SDKs y APIs para verificar tokens o recibir notificaciones push.
-- Permite monitorización y auditoría, ver logs de accesos, alertas automáticas para eventos, etc.
+```yaml
+rules:
+  - id: hardcoded-secret
+    pattern: |
+      password = "..."
+    message: "Contraseña hardcodeada detectada"
+    severity: ERROR
+    languages: [python, javascript, java]
 
----
+  - id: sql-injection
+    pattern: |
+      execute("SELECT * FROM users WHERE id = " + $VAR)
+    message: "Posible SQL injection"
+    severity: ERROR
 
-## Gestión de vulnerabilidades y parches
+  - id: weak-crypto
+    pattern: |
+      crypto.createHash('md5')
+    message: "Algoritmo de hash débil (MD5)"
+    severity: WARNING
+    languages: [javascript]
+    
+  - id: jwt-no-verify
+    pattern: |
+      jwt.decode($TOKEN, {verify: false})
+    message: "JWT sin verificación de firma"
+    severity: ERROR
+    languages: [javascript]
+```
 
-### Principios
-- Mantener sistemas operativos, aplicaciones y dependencias siempre actualizadas.
-- Revisar y aplicar parches de seguridad en cuanto se publiquen.
-- Usar fuentes oficiales de proveedores y repositorios seguros.
-- Programar ciclos de parcheo regulares (ej: mensual) y revisiones de seguridad.
+### SonarQube
 
----
+```bash
+# Docker con SonarQube
+docker run -d --name sonarqube \
+  -p 9000:9000 \
+  -v sonarqube_data:/opt/sonarqube/data \
+  sonarqube:latest
 
-### Monitoreo de vulnerabilidades (CVE)
-- Consultar **bases de datos oficiales**:
-  - NVD (National Vulnerability Database)
-  - CVE Details
-  - Security advisories de proveedores (Microsoft, Red Hat, Debian, etc.)
-- Implementar **alertas automáticas** para CVEs críticos relacionados con el stack en uso.
+# Instalar scanner
+npm install -g sonarqube-scanner
 
----
+# Configurar proyecto - sonar-project.properties
+sonar.projectKey=fintech-app
+sonar.sources=src
+sonar.exclusions=**/node_modules/**,**/*.test.js
+sonar.javascript.lcov.reportPaths=coverage/lcov.info
+sonar.host.url=http://localhost:9000
 
-### Herramientas de escaneo
-- **OWASP ZAP** → Detección de vulnerabilidades en aplicaciones web.
-- **Nikto** → Escáner de servidores web para configuraciones inseguras.
-- **Snyk** → Análisis de dependencias, librerías y contenedores.
-- **OpenVAS / Greenbone** → Escaneo de red y servicios.
-- **Clair o Trivy** → Escaneo de imágenes de contenedores.
-
-Ejemplo con Trivy en Docker:
-
-docker run --rm aquasec/trivy image nginx:latest
-
-Gestión de parches
-
-Inventario: identificar sistemas, versiones y software en uso.
-
-Evaluación: priorizar parches según criticidad (CVSS, exposición a internet).
-
-Aplicación: desplegar parches en entornos de prueba antes de producción.
-
-Automatización: usar herramientas como Ansible, Puppet o WSUS para aplicar parches.
-
-Verificación: confirmar que el parche se aplicó y no rompió dependencias.
-
-Registro: documentar cambios para auditoría.
+# Ejecutar análisis
+sonar-scanner -Dsonar.login=YOUR_TOKEN
+```
 
 ---
 
-Gestión de vulnerabilidades y parches
+## DAST - Análisis Dinámico
 
-Mantener sistemas operativos, aplicaciones y dependencias actualizadas.
+### OWASP ZAP
 
-Monitoreo de CVEs (Common Vulnerabilities and Exposures) relevantes.
+```bash
+# Ejecutar ZAP baseline scan en Docker
+docker run -u zap -p 8080:8080 \
+  -v $(pwd):/zap/wrk:rw \
+  owasp/zap2docker-stable \
+  zap-baseline.py \
+  -t https://api.example.com \
+  -r zap-report.html
 
-Uso de herramientas de escaneo básico: OWASP ZAP, Nikto, Snyk.
+# Scan completo (más agresivo, usar en staging)
+docker run -u zap \
+  owasp/zap2docker-stable \
+  zap-full-scan.py \
+  -t https://api.example.com \
+  -r zap-full-report.html
 
-Programar ciclos de parcheo regulares y revisiones de seguridad.
+# Con autenticación
+docker run -u zap \
+  owasp/zap2docker-stable \
+  zap-baseline.py \
+  -t https://api.example.com \
+  -c zap-config.conf \
+  -r zap-auth-report.html
+```
 
-Seguridad de APIs
+**Archivo zap-config.conf:**
 
-Validación de inputs y outputs.
+```
+# Configuración de autenticación
+auth.loginurl=https://api.example.com/login
+auth.username=testuser
+auth.password=testpass
+auth.username_field=email
+auth.password_field=password
+auth.submit_field=submit
+```
 
-Autenticación y autorización por endpoint.
+### Burp Suite (proceso manual)
 
-Limitar métodos HTTP permitidos.
+**Pasos:**
+1. Configurar proxy en navegador: 127.0.0.1:8080
+2. Abrir Burp Suite → Proxy → Intercept
+3. Navegar la aplicación y capturar requests
+4. Usar Repeater para modificar y reenviar requests
+5. Usar Intruder para fuzzing de parámetros
+6. Analizar respuestas en busca de información sensible
+7. Revisar Scanner results para vulnerabilidades automáticas
 
-Rate limiting / throttling.
+### Nuclei (scanning automatizado)
 
-Registro de accesos y auditoría de uso.
+```bash
+# Instalar
+go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
 
-## Seguridad de la infraestructura cloud
+# Actualizar templates
+nuclei -update-templates
 
-Revisión de permisos IAM / roles mínimo privilegio.
+# Scan básico
+nuclei -u https://api.example.com
 
-Habilitar cifrado en reposo y en tránsito.
+# Scan con severidad alta/crítica solamente
+nuclei -u https://api.example.com -severity critical,high
 
-Backups cifrados y periódicos.
+# Con templates específicos
+nuclei -u https://api.example.com -t cves/ -t vulnerabilities/
 
-Monitoreo de actividad sospechosa.
+# Múltiples targets desde archivo
+nuclei -list targets.txt -severity high,critical -o results.txt
 
-## Gestión de incidentes y flujos de remediación
-
-Procedimientos claros para incidentes menores y críticos.
-
-Notificación y escalado.
-
-Registro y análisis post-mortem.
-
-Ejemplos de flujos para phishing, malware o brechas de datos.
-
-## Concienciación y formación del equipo
-
-Capacitación periódica sobre phishing y ingeniería social.
-
-Entrenamiento para reconocer ataques comunes.
-
-Revisión de políticas de seguridad.
-
-## Logging y monitorización
-
-Activar logs de acceso y auditoría para todos los sistemas críticos.
-
-Alertas automáticas ante intentos fallidos o accesos sospechosos.
-
-Centralización de logs si es posible (ELK, Wazuh, Cloud Monitor).
-
-## Gestión de datos sensibles
-
-Clasificación de datos según sensibilidad.
-
-Enmascaramiento o tokenización de datos críticos.
-
-Eliminación segura de datos obsoletos.
-
-##  Evaluación periódica
-
-Auditorías internas o externas.
-
-Escaneos de vulnerabilidades.
-
-Revisión de políticas y cumplimiento regulatorio (GDPR, PCI DSS).
-
----
-
-## Gestión de vulnerabilidades y parches
-
-### Principios
-- Mantener sistemas operativos, aplicaciones y dependencias siempre actualizadas.
-- Revisar y aplicar parches de seguridad en cuanto se publiquen.
-- Usar fuentes oficiales de proveedores y repositorios seguros.
-- Programar ciclos de parcheo regulares (ej: mensual) y revisiones de seguridad.
+# Con rate limiting para no saturar
+nuclei -u https://api.example.com -rate-limit 10
+```
 
 ---
 
-### Monitoreo de vulnerabilidades (CVE)
-- Consultar **bases de datos oficiales**:
-  - NVD (National Vulnerability Database)
-  - CVE Details
-  - Security advisories de proveedores (Microsoft, Red Hat, Debian, etc.)
-- Implementar **alertas automáticas** para CVEs críticos relacionados con el stack en uso.
+## SCA - Análisis de Dependencias
+
+### npm audit
+
+```bash
+# Verificar vulnerabilidades
+npm audit
+
+# Ver detalles en formato JSON
+npm audit --json
+
+# Generar reporte completo
+npm audit --json > audit-report.json
+
+# Intentar fix automático (solo versiones compatibles)
+npm audit fix
+
+# Fix forzado - CUIDADO: puede romper dependencias
+npm audit fix --force
+
+# Ver solo vulnerabilidades críticas/altas
+npm audit --audit-level=high
+```
+
+### Snyk
+
+```bash
+# Instalar
+npm install -g snyk
+
+# Autenticar (abre navegador)
+snyk auth
+
+# Test de vulnerabilidades
+snyk test
+
+# Test con reporte JSON
+snyk test --json > snyk-report.json
+
+# Monitor proyecto (envía a dashboard de Snyk)
+snyk monitor
+
+# Test con severidad específica
+snyk test --severity-threshold=high
+
+# Ignorar vulnerabilidades específicas
+snyk ignore --id=SNYK-JS-MINIMIST-559764
+
+# Test de imagen Docker
+snyk test --docker node:18-alpine
+
+# Fix automático de vulnerabilidades
+snyk fix
+```
+
+**Archivo .snyk para configuración:**
+
+```yaml
+# Snyk configuration file
+version: v1.22.0
+ignore:
+  SNYK-JS-MINIMIST-559764:
+    - '*':
+        reason: No fix available, low risk in our context
+        expires: 2025-12-31T00:00:00.000Z
+patch: {}
+```
+
+### Dependabot (GitHub)
+
+**Archivo .github/dependabot.yml:**
+
+```yaml
+version: 2
+updates:
+  # npm dependencies
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 10
+    reviewers:
+      - "security-team"
+    labels:
+      - "dependencies"
+      - "security"
+    commit-message:
+      prefix: "chore"
+      include: "scope"
+
+  # Docker dependencies
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    
+  # GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+```
+
+### OWASP Dependency-Check
+
+```bash
+# Descargar (una vez)
+wget https://github.com/jeremylong/DependencyCheck/releases/download/v8.4.0/dependency-check-8.4.0-release.zip
+unzip dependency-check-8.4.0-release.zip
+
+# Ejecutar análisis
+./dependency-check/bin/dependency-check.sh \
+  --project "Fintech App" \
+  --scan ./src \
+  --out ./reports \
+  --format HTML
+
+# Con supresión de falsos positivos
+./dependency-check/bin/dependency-check.sh \
+  --project "Fintech App" \
+  --scan ./src \
+  --out ./reports \
+  --suppression suppression.xml
+
+# Actualizar base de datos NVD
+./dependency-check/bin/dependency-check.sh --updateonly
+```
+
+**Archivo suppression.xml:**
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<suppressions xmlns="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.3.xsd">
+    <suppress>
+        <notes>False positive - not applicable to our usage</notes>
+        <cve>CVE-2021-12345</cve>
+    </suppress>
+</suppressions>
+```
 
 ---
 
-### Herramientas de escaneo
-- **OWASP ZAP** → Detección de vulnerabilidades en aplicaciones web.
-- **Nikto** → Escáner de servidores web para configuraciones inseguras.
-- **Snyk** → Análisis de dependencias, librerías y contenedores.
-- **OpenVAS / Greenbone** → Escaneo de red y servicios.
-- **Clair o Trivy** → Escaneo de imágenes de contenedores.
+## Secret Scanning
+
+### GitLeaks
+
+```bash
+# Instalar
+brew install gitleaks
+# o
+docker pull zricethezav/gitleaks:latest
+
+# Escanear repo actual
+gitleaks detect --source . --verbose
+
+# Escanear commits específicos
+gitleaks detect --source . --log-opts="--since=2024-01-01"
+
+# Con configuración personalizada
+gitleaks detect --config .gitleaks.toml
+
+# Escanear sin cache
+gitleaks detect --no-cache
+
+# Generar reporte JSON
+gitleaks detect --report-path gitleaks-report.json --report-format json
+```
+
+**Archivo .gitleaks.toml:**
+
+```toml
+title = "Gitleaks Config for Fintech App"
+
+[extend]
+useDefault = true
+
+[[rules]]
+id = "aws-access-key"
+description = "AWS Access Key ID"
+regex = '''AKIA[0-9A-Z]{16}'''
+tags = ["aws", "credentials"]
+
+[[rules]]
+id = "stripe-api-key"
+description = "Stripe API Key"
+regex = '''sk_live_[0-9a-zA-Z]{24}'''
+tags = ["stripe", "payment"]
+
+[[rules]]
+id = "jwt-secret"
+description = "JWT Secret"
+regex = '''jwt[_-]?secret["\']?\s*[:=]\s*["\'][^"\']{20,}["\']'''
+tags = ["jwt", "authentication"]
+
+[allowlist]
+description = "Allowlist"
+paths = [
+  '''node_modules/''',
+  '''\.git/''',
+  '''package-lock\.json''',
+]
+```
+
+### TruffleHog
+
+```bash
+# Instalar
+pip install truffleHog
+
+# Escanear repo
+trufflehog git https://github.com/yourorg/yourrepo --json
+
+# Escanear repo local
+trufflehog filesystem . --json
+
+# Solo alta entropía
+trufflehog git https://github.com/yourorg/yourrepo --entropy
+
+# Con verificación de secrets activos
+trufflehog git https://github.com/yourorg/yourrepo --verify
+
+# Escanear Docker image
+trufflehog docker --image myapp:latest
+```
+
+### git-secrets (AWS)
+
+```bash
+# Instalar
+brew install git-secrets
+
+# Configurar en repo
+cd /path/to/repo
+git secrets --install
+
+# Agregar patrones AWS
+git secrets --register-aws
+
+# Agregar patrones personalizados
+git secrets --add 'password\s*=\s*.+'
+git secrets --add 'api[_-]?key\s*=\s*.+'
+
+# Escanear historial completo
+git secrets --scan-history
+
+# Escanear antes de commit (hook automático)
+# Ya configurado con --install
+```
+
+---
+
+## Pipeline CI/CD Seguro
+
+### GitHub Actions - Workflow de Seguridad
+
+**Archivo .github/workflows/security.yml:**
+
+```yaml
+name: Security Checks
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: '0 0 * * 1'  # Weekly on Monday
+
+jobs:
+  secret-scanning:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      
+      - name: GitLeaks Scan
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITLEAKS_LICENSE: ${{ secrets.GITLEAKS_LICENSE }}
+
+  dependency-scanning:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: npm audit
+        run: npm audit --audit-level=high
+        continue-on-error: true
+      
+      - name: Snyk Test
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          args: --severity-threshold=high
+
+  sast-scanning:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Semgrep Scan
+        uses: returntocorp/semgrep-action@v1
+        with:
+          config: >-
+            p/owasp-top-ten
+            p/security-audit
+      
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+  container-scanning:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Build Docker image
+        run: docker build -t myapp:${{ github.sha }} .
+      
+      - name: Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: myapp:${{ github.sha }}
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+          severity: 'CRITICAL,HIGH'
+      
+      - name: Upload Trivy results to GitHub Security
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: 'trivy-results.sarif'
+
+  dast-scanning:
+    runs-on: ubuntu-latest
+    needs: [sast-scanning, dependency-scanning]
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Deploy to staging
+        run: |
+          # Script de deploy a staging
+          ./deploy-staging.sh
+      
+      - name: ZAP Baseline Scan
+        uses: zaproxy/action-baseline@v0.7.0
+        with:
+          target: 'https://staging.example.com'
+          rules_file_name: '.zap/rules.tsv'
+          cmd_options: '-a'
+
+  security-report:
+    runs-on: ubuntu-latest
+    needs: [secret-scanning, dependency-scanning, sast-scanning, container-scanning]
+    if: always()
+    steps:
+      - name: Consolidate reports
+        run: |
+          echo "Security scan completed"
+          echo "Check individual job results"
+      
+      - name: Notify team
+        uses: 8398a7/action-slack@v3
+        if: failure()
+        with:
+          status: ${{ job.status }}
+          text: 'Security scan failed - check GitHub Actions'
+          webhook_url: ${{ secrets.SLACK_WEBHOOK }}
+```
+
+### GitLab CI/CD
+
+**Archivo .gitlab-ci.yml:**
+
+```yaml
+stages:
+  - test
+  - security
+  - deploy
+
+variables:
+  DOCKER_DRIVER: overlay2
+  DOCKER_TLS_CERTDIR: "/certs"
+
+# Template para seguridad
+include:
+  - template: Security/SAST.gitlab-ci.yml
+  - template: Security/Dependency-Scanning.gitlab-ci.yml
+  - template: Security/Secret-Detection.gitlab-ci.yml
+  - template: Security/Container-Scanning.gitlab-ci.yml
+
+unit-tests:
+  stage: test
+  image: node:18-alpine
+  script:
+    - npm ci
+    - npm run test:coverage
+  coverage: '/Statements\s*:\s*(\d+\.\d+)%/'
+  artifacts:
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: coverage/cobertura-coverage.xml
+
+semgrep-sast:
+  stage: security
+  image: returntocorp/semgrep
+  script:
+    - semgrep --config=auto --json -o semgrep-report.json src/
+  artifacts:
+    reports:
+      sast: semgrep-report.json
+    expire_in: 1 week
+  allow_failure: true
+
+npm-audit:
+  stage: security
+  image: node:18-alpine
+  script:
+    - npm ci
+    - npm audit --json > npm-audit.json || true
+    - npm audit --audit-level=high
+  artifacts:
+    paths:
+      - npm-audit.json
+    expire_in: 1 week
+  allow_failure: false
+
+snyk-test:
+  stage: security
+  image: node:18-alpine
+  before_script:
+    - npm install -g snyk
+    - snyk auth $SNYK_TOKEN
+  script:
+    - npm ci
+    - snyk test --severity-threshold=high --json > snyk-report.json
+  artifacts:
+    paths:
+      - snyk-report.json
+    expire_in: 1 week
+  allow_failure: true
+
+container-scanning:
+  stage: security
+  image: docker:latest
+  services:
+    - docker:dind
+  variables:
+    DOCKER_IMAGE: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
+  script:
+    - docker build -t $DOCKER_IMAGE .
+    - docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
+        aquasec/trivy image --severity HIGH,CRITICAL $DOCKER_IMAGE
+  allow_failure: true
+
+zap-dast:
+  stage: security
+  image: owasp/zap2docker-stable
+  script:
+    - zap-baseline.py -t $STAGING_URL -r zap-report.html
+  artifacts:
+    paths:
+      - zap-report.html
+    expire_in: 1 week
+  only:
+    - main
+  allow_failure: true
+
+deploy-production:
+  stage: deploy
+  script:
+    - echo "Deploying to production"
+    - ./deploy-prod.sh
+  only:
+    - main
+  when: manual
+  needs: 
+    - semgrep-sast
+    - npm-audit
+    - container-scanning
+```
+
+---
+
+## Monitoreo y Detección
+
+### ELK Stack (Elasticsearch, Logstash, Kibana)
+
+**docker-compose.yml para ELK:**
+
+```yaml
+version: '3.8'
+
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.10.0
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+      - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
+      - xpack.security.enabled=true
+      - ELASTIC_PASSWORD=changeme
+    ports:
+      - "9200:9200"
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
+    networks:
+      - elk
+
+  logstash:
+    image: docker.elastic.co/logstash/logstash:8.10.0
+    container_name: logstash
+    volumes:
+      - ./logstash/pipeline:/usr/share/logstash/pipeline
+      - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml
+    ports:
+      - "5044:5044"
+      - "9600:9600"
+    environment:
+      - "LS_JAVA_OPTS=-Xms512m -Xmx512m"
+    networks:
+      - elk
+    depends_on:
+      - elasticsearch
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:8.10.0
+    container_name: kibana
+    ports:
+      - "5601:5601"
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+      - ELASTICSEARCH_USERNAME=elastic
+      - ELASTICSEARCH_PASSWORD=changeme
+    networks:
+      - elk
+    depends_on:
+      - elasticsearch
+
+volumes:
+  esdata:
+    driver: local
+
+networks:
+  elk:
+    driver: bridge
+```
+
+**Logstash pipeline - logstash/pipeline/logstash.conf:**
+
+```conf
+input {
+  beats {
+    port => 5044
+  }
+  
+  tcp {
+    port => 5000
+    codec => json
+  }
+}
+
+filter {
+  # Parse JSON logs
+  if [message] =~ /^\{.*\}$/ {
+    json {
+      source => "message"
+    }
+  }
+  
+  # Grok para logs de Nginx
+  if [type] == "nginx-access" {
+    grok {
+      match => { "message" => "%{IPORHOST:remote_addr} - %{DATA:remote_user} \[%{HTTPDATE:time_local}\] \"%{WORD:request_method} %{DATA:request_uri} HTTP/%{NUMBER:http_version}\" %{NUMBER:status} %{NUMBER:body_bytes_sent} \"%{DATA:http_referer}\" \"%{DATA:http_user_agent}\"" }
+    }
+    
+    # Detectar ataques comunes
+    if [request_uri] =~ /(\.\.|\/etc\/passwd|<script|UNION\s+SELECT|exec\()/i {
+      mutate {
+        add_tag => ["potential_attack"]
+      }
+    }
+  }
+  
+  # Detección de intentos de login fallidos
+  if [message] =~ /Failed password|authentication failure|Invalid user/ {
+    mutate {
+      add_tag => ["failed_login"]
+      add_field => { "alert_level" => "warning" }
+    }
+  }
+  
+  # Geolocate IPs
+  geoip {
+    source => "remote_addr"
+    target => "geoip"
+  }
+}
+
+output {
+  elasticsearch {
+    hosts => ["elasticsearch:9200"]
+    index => "logs-%{+YYYY.MM.dd}"
+    user => "elastic"
+    password => "changeme"
+  }
+  
+  # Output condicional para alertas
+  if "potential_attack" in [tags] or "failed_login" in [tags] {
+    file {
+      path => "/var/log/security-alerts.log"
+      codec => json_lines
+    }
+  }
+  
+  stdout {
+    codec => rubydebug
+  }
+}
+```
+
+### Filebeat para envío de logs
+
+**filebeat.yml:**
+
+```yaml
+filebeat.inputs:
+  - type: log
+    enabled: true
+    paths:
+      - /var/log/nginx/access.log
+    fields:
+      type: nginx-access
+    fields_under_root: true
+
+  - type: log
+    enabled: true
+    paths:
+      - /var/log/auth.log
+      - /var/log/secure
+    fields:
+      type: system-auth
+    fields_under_root: true
+
+  - type: log
+    enabled: true
+    paths:
+      - /var/log/app/*.log
+    json.keys_under_root: true
+    json.add_error_key: true
+
+filebeat.config.modules:
+  path: ${path.config}/modules.d/*.yml
+  reload.enabled: false
+
+processors:
+  - add_host_metadata:
+      when.not.contains.tags: forwarded
+  - add_cloud_metadata: ~
+  - add_docker_metadata: ~
+
+output.logstash:
+  hosts: ["logstash:5044"]
+  
+# Si prefieres enviar directo a Elasticsearch:
+# output.elasticsearch:
+#   hosts: ["elasticsearch:9200"]
+#   username: "elastic"
+#   password: "changeme"
+#   index: "filebeat-%{+yyyy.MM.dd}"
+
+logging.level: info
+logging.to_files: true
+logging.files:
+  path: /var/log/filebeat
+  name: filebeat
+  keepfiles: 7
+  permissions: 0644
+```
+
+### Prometheus + Grafana para métricas
+
+**docker-compose.yml para monitoreo:**
+
+```yaml
+version: '3.8'
+
+services:
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/usr/share/prometheus/console_libraries'
+      - '--web.console.templates=/usr/share/prometheus/consoles'
+    ports:
+      - "9090:9090"
+    networks:
+      - monitoring
+    restart: unless-stopped
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_USERS_ALLOW_SIGN_UP=false
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./grafana/provisioning:/etc/grafana/provisioning
+    ports:
+      - "3000:3000"
+    networks:
+      - monitoring
+    depends_on:
+      - prometheus
+    restart: unless-stopped
+
+  node-exporter:
+    image: prom/node-exporter:latest
+    container_name: node-exporter
+    command:
+      - '--path.procfs=/host/proc'
+      - '--path.sysfs=/host/sys'
+      - '--collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)'
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    ports:
+      - "9100:9100"
+    networks:
+      - monitoring
+    restart: unless-stopped
+
+  alertmanager:
+    image: prom/alertmanager:latest
+    container_name: alertmanager
+    volumes:
+      - ./alertmanager/alertmanager.yml:/etc/alertmanager/alertmanager.yml
+    command:
+      - '--config.file=/etc/alertmanager/alertmanager.yml'
+      - '--storage.path=/alertmanager'
+    ports:
+      - "9093:9093"
+    networks:
+      - monitoring
+    restart: unless-stopped
+
+volumes:
+  prometheus_data:
+  grafana_data:
+
+networks:
+  monitoring:
+    driver: bridge
+```
+
+**prometheus/prometheus.yml:**
+
+```yaml
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  external_labels:
+    cluster: 'fintech-prod'
+    environment: 'production'
+
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets: ['alertmanager:9093']
+
+rule_files:
+  - 'alerts/*.yml'
+
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  - job_name: 'node-exporter'
+    static_configs:
+      - targets: ['node-exporter:9100']
+
+  - job_name: 'api-backend'
+    metrics_path: '/metrics'
+    static_configs:
+      - targets: ['api:8080']
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: instance
+        regex: '([^:]+)(:[0-9]+)?'
+        replacement: '${1}'
+
+  - job_name: 'nginx'
+    static_configs:
+      - targets: ['nginx-exporter:9113']
+
+  - job_name: 'postgres'
+    static_configs:
+      - targets: ['postgres-exporter:9187']
+```
+
+**prometheus/alerts/security-alerts.yml:**
+
+```yaml
+groups:
+  - name: security_alerts
+    interval: 30s
+    rules:
+      - alert: HighFailedLoginRate
+        expr: rate(failed_login_attempts_total[5m]) > 10
+        for: 2m
+        labels:
+          severity: warning
+          category: security
+        annotations:
+          summary: "High rate of failed login attempts"
+          description: "{{ $value }} failed login attempts per second in the last 5 minutes on {{ $labels.instance }}"
+
+      - alert: UnauthorizedAccessAttempt
+        expr: http_requests_total{status="401"} > 100
+        for: 5m
+        labels:
+          severity: warning
+          category: security
+        annotations:
+          summary: "Multiple unauthorized access attempts"
+          description: "{{ $value }} unauthorized (401) requests detected"
+
+      - alert: SQLInjectionAttempt
+        expr: increase(sql_injection_attempts_total[5m]) > 0
+        for: 1m
+        labels:
+          severity: critical
+          category: security
+        annotations:
+          summary: "SQL Injection attempt detected"
+          description: "Possible SQL injection attack detected from {{ $labels.source_ip }}"
+
+      - alert: AbnormalTrafficVolume
+        expr: rate(http_requests_total[5m]) > 1000
+        for: 5m
+        labels:
+          severity: warning
+          category: performance
+        annotations:
+          summary: "Abnormal traffic volume detected"
+          description: "Traffic rate of {{ $value }} req/s is abnormally high - possible DDoS"
+
+      - alert: CriticalServiceDown
+        expr: up{job="api-backend"} == 0
+        for: 1m
+        labels:
+          severity: critical
+          category: availability
+        annotations:
+          summary: "Critical service is down"
+          description: "{{ $labels.job }} on {{ $labels.instance }} has been down for more than 1 minute"
+
+      - alert: HighMemoryUsage
+        expr: (node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes) / node_memory_MemTotal_bytes > 0.9
+        for: 5m
+        labels:
+          severity: warning
+          category: resources
+        annotations:
+          summary: "High memory usage"
+          description: "Memory usage is above 90% on {{ $labels.instance }}"
+
+      - alert: DiskSpaceLow
+        expr: (node_filesystem_avail_bytes{mountpoint="/"} / node_filesystem_size_bytes{mountpoint="/"}) < 0.1
+        for: 5m
+        labels:
+          severity: warning
+          category: resources
+        annotations:
+          summary: "Low disk space"
+          description: "Less than 10% disk space remaining on {{ $labels.instance }}"
+```
+
+**alertmanager/alertmanager.yml:**
+
+```yaml
+global:
+  resolve_timeout: 5m
+  slack_api_url: 'YOUR_SLACK_WEBHOOK_URL'
+
+route:
+  group_by: ['alertname', 'cluster', 'service']
+  group_wait: 10s
+  group_interval: 10s
+  repeat_interval: 12h
+  receiver: 'default'
+  routes:
+    - match:
+        severity: critical
+      receiver: 'critical-alerts'
+      continue: true
+    
+    - match:
+        category: security
+      receiver: 'security-team'
+      continue: true
+
+receivers:
+  - name: 'default'
+    slack_configs:
+      - channel: '#alerts'
+        title: 'Alert: {{ .GroupLabels.alertname }}'
+        text: '{{ range .Alerts }}{{ .Annotations.description }}{{ end }}'
+
+  - name:
+
