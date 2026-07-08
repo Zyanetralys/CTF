@@ -4,6 +4,8 @@
 ## Descripción
 Panel de control de una red CDN. Permite generar páginas de estado personalizadas para cada nodo edge, renderizadas en el servidor. La etiqueta que defines acaba en un documento que el servidor procesa. Aprovéchalo para leer lo que no deberías.
 
+![Interfaz inicial del panel EdgeCache](https://raw.githubusercontent.com/Zyanetralys/CTF/main/capturas/1.png)
+
 ---
 
 ## Reconocimiento
@@ -28,6 +30,8 @@ Para confirmar que la entrada del usuario en el campo `Edge label` se inyecta si
 
 Al hacer clic en "render document", el servidor procesa la directiva y devuelve la fecha actual en el panel de resultados. SSI Injection confirmado.
 
+![PoC - SSI Injection con DATE_LOCAL](https://raw.githubusercontent.com/Zyanetralys/CTF/main/capturas/2.png)
+
 ### Paso 2: Identificación de Usuario y Lectura de Archivos (LFI via SSI)
 Sabiendo que podemos inyectar código, el siguiente paso es demostrar la lectura de archivos arbitrarios. Primero verificamos los privilegios con los que corre el servidor:
 
@@ -37,12 +41,17 @@ Sabiendo que podemos inyectar código, el siguiente paso es demostrar la lectura
 
 Resultado: ```uid=33(www-data) gid=33(www-data) groups=33(www-data)```
 
+![Verificación de usuario con id](https://raw.githubusercontent.com/Zyanetralys/CTF/main/capturas/3.png)
+
+
 Luego, utilizamos la directiva #include para leer el archivo de usuarios del sistema:
 
 <!--#include file="/etc/passwd" -->
 
 La respuesta nos revela la lista de usuarios, destacando la existencia del usuario german con su directorio home en 
 ```/home/german/.```
+
+![Lectura de /etc/passwd](https://raw.githubusercontent.com/Zyanetralys/CTF/main/capturas/4.png)
 
 ### Paso 3: Escalación a Ejecución Remota de Comandos (RCE)
 Para localizar la flag de forma precisa, aprovechamos la directiva #exec permitida por el servidor para ejecutar comandos del sistema operativo. Listamos el directorio del usuario:
@@ -55,6 +64,8 @@ Y confirmamos la ruta exacta buscando archivos con la palabra "flag":
 
 El servidor ejecuta el comando y nos devuelve la ruta exacta: /home/german/flag.txt.
 
+![Listado del directorio /home/german](https://raw.githubusercontent.com/Zyanetralys/CTF/main/capturas/5.png)
+
 ### Paso 4: Extracción de la Flag
 Finalmente, leemos el contenido del archivo utilizando la directiva #exec y cat:
 
@@ -62,7 +73,11 @@ Finalmente, leemos el contenido del archivo utilizando la directiva #exec y cat:
 
 El servidor renderiza el documento y nos entrega la flag directamente en el panel de resultados.
 
+![Búsqueda de la flag con find](https://raw.githubusercontent.com/Zyanetralys/CTF/main/capturas/6.png)
+
 ### Conseguimos la Flag
+
+![Extracción de la flag final](https://raw.githubusercontent.com/Zyanetralys/CTF/main/capturas/7.png)
 
 ## Conclusión
 Esta vulnerabilidad ocurre porque la aplicación concatena la entrada del usuario directamente en un archivo .shtml sin aplicar ninguna sanitización o escaping, permitiendo la inyección de directivas SSI.
