@@ -1,5 +1,5 @@
 # Writeup: EdgeCache
-**Categoría:** Web | **Dificultad:** Easy | **Plataforma:** Six Hack Academy
+**Categoría:** Web | **Dificultad:** Easy | **Plataforma:** Six Hack Academy | **Fecha:** 22:02; 08/07/2026.
 
 ## Descripción
 Panel de control de una red CDN. Permite generar páginas de estado personalizadas para cada nodo edge, renderizadas en el servidor. La etiqueta que defines acaba en un documento que el servidor procesa. Aprovéchalo para leer lo que no deberías.
