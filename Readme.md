@@ -4,7 +4,7 @@
     ╔══════════════════════════════════════════════════════════════╗
     ║                                                              ║  
     ║     "Los sistemas caen, los códigos se rompen,               ║
-    ║      pero nosotros,  no podemos rendirnos                    ║
+    ║      pero nosotros, no podemos rendirnos"                    ║
     ║                                                              ║
     ╚══════════════════════════════════════════════════════════════╝
 ```
