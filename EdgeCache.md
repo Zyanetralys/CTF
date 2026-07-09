@@ -1,5 +1,5 @@
 # Writeup: EdgeCache
-**Categoría:** Web | **Dificultad:** Easy | **Plataforma:** Six Hack Academy | **Fecha:** 22:02, 08/07/2026.
+**Categoría:** Web | **Dificultad:** Easy | **Plataforma:** Six Hack Academy | **Fecha:** 08/07/2026, 22:02.
 
 ![Portada EdgeCache](https://github.com/Zyanetralys/CTF/blob/main/portadas/ME.jpg)
 
