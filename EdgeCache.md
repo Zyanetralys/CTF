@@ -1,5 +1,7 @@
 # Writeup: EdgeCache
-**Categoría:** Web | **Dificultad:** Easy | **Plataforma:** Six Hack Academy | **Fecha:** 22:02; 08/07/2026.
+**Categoría:** Web | **Dificultad:** Easy | **Plataforma:** Six Hack Academy | **Fecha:** 22:02, 08/07/2026.
+
+![Portada EdgeCache](https://github.com/Zyanetralys/CTF/blob/main/portadas/ME.jpg)
 
 ## Descripción
 Panel de control de una red CDN. Permite generar páginas de estado personalizadas para cada nodo edge, renderizadas en el servidor. La etiqueta que defines acaba en un documento que el servidor procesa. Aprovéchalo para leer lo que no deberías.
@@ -9,31 +11,33 @@ Panel de control de una red CDN. Permite generar páginas de estado personalizad
 ---
 
 ## Reconocimiento
-Al acceder al laboratorio, nos encontramos con un panel de control llamado **EdgeCache**. La interfaz presenta un formulario "status page builder" con un campo de texto libre llamado `Edge label`.
+Al acceder al laboratorio, nos encontramos con un panel de control llamado **EdgeCache**. La interfaz tiene un formulario "status page builder" con un campo de texto libre llamado `Edge label`.
 
 La pista clave está en la descripción y en el propio footer del formulario:
 ```
 > *"The document is parsed by mod_include before delivery... Directives supported: #echo, #include, #exec."*
 ```
-Esto nos indica claramente que el servidor está utilizando **Apache mod_include** para procesar **Server-Side Includes (SSI)** antes de entregar la página al cliente.
+Nos indica que el servidor está utilizando **Apache mod_include** para procesar **Server-Side Includes (SSI)** antes de entregar la página al cliente.
 
 ---
 
 ## Explotación (SSI Injection)
 
 ### Paso 1: Prueba de Concepto (PoC)
-Para confirmar que la entrada del usuario en el campo `Edge label` se inyecta sin sanitizar en el documento `.shtml`, inyectamos una directiva SSI básica para imprimir la fecha local del servidor:
+Para confirmar que la entrada del usuario en el campo `Edge label` se inyecta en el documento `.shtml`, inyectamos una directiva SSI básica para imprimir la fecha local del servidor:
 
 ```
 <!--#echo var="DATE_LOCAL" -->
 ```
 
-Al hacer clic en "render document", el servidor procesa la directiva y devuelve la fecha actual en el panel de resultados. SSI Injection confirmado.
+Al hacer clic en "render document", el servidor procesa la directiva y devuelve la fecha actual en el panel de resultados. SSI Injection.
 
 ![PoC - SSI Injection con DATE_LOCAL](https://raw.githubusercontent.com/Zyanetralys/CTF/main/capturas/2.png)
 
 ### Paso 2: Identificación de Usuario y Lectura de Archivos (LFI via SSI)
-Sabiendo que podemos inyectar código, el siguiente paso es demostrar la lectura de archivos arbitrarios. Primero verificamos los privilegios con los que corre el servidor:
+Sabiendo que podemos inyectar código, el siguiente paso es demostrar la lectura de archivos arbitrarios. 
+
+Primero verificamos los privilegios con los que corre el servidor:
 
 ```
 <!--#exec cmd="id" -->
